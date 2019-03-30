@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Messages.NewMessagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_new_message}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CancelCommand}" Text="{ex:Translate Key=label_text_cancel}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="5,0,5,0"
+                BackgroundColor="WhiteSmoke"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    Margin="0,0,0,2"
+                    FontSize="13"
+                    HorizontalOptions="Start"
+                    Text="{ex:Translate Key=label_text_title_2}"
+                    TextColor="DimGray"
+                    VerticalOptions="Center"
+                    WidthRequest="40" />
+                <Entry
+                    FontSize="13"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Text="{Binding NewMessage.Title}"
+                    VerticalOptions="Center">
+                    <Entry.Effects>
+                        <effects:BorderlessEffect />
+                    </Entry.Effects>
+                </Entry>
+            </StackLayout>
+            <StackLayout
+                Padding="5,0,5,0"
+                BackgroundColor="WhiteSmoke"
+                HeightRequest="35"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    Margin="0,0,0,2"
+                    FontSize="13"
+                    HorizontalOptions="Start"
+                    Text="{ex:Translate Key=label_text_to_2}"
+                    TextColor="DimGray"
+                    VerticalOptions="Center"
+                    WidthRequest="40" />
+                <Entry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    InputTransparent="True"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Text="{Binding UserReceive.FullName}"
+                    VerticalOptions="Center">
+                    <Entry.Effects>
+                        <effects:BorderlessEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Image
+                    Margin="0,0,0,2"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    Source="ic_add_circle_outline_black"
+                    VerticalOptions="Center"
+                    WidthRequest="25">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddUserCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <BoxView
+                BackgroundColor="LightGray"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                Color="LightGray" />
+            <ScrollView
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout Padding="10" />
+            </ScrollView>
+            <StackLayout
+                Margin="10,0,10,10"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <Editor
+                    FontSize="14"
+                    HeightRequest="80"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding NewMessage.Content}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Editor.Effects>
+                        <effects:RoundedEffect />
+                    </Editor.Effects>
+                </Editor>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="DeepSkyBlue"
+                    CornerRadius="17.5"
+                    HasShadow="False"
+                    HeightRequest="35"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="35">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendMessageCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Image Margin="8,8,6,8" Source="ic_send_white" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

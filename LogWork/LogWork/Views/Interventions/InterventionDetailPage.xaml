@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Interventions.InterventionDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:local="clr-namespace:LogWork"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <controls:HideableToolbarItem Command="{Binding BindingContext.DeleteInterventionCommand, Source={Reference this}}" Icon="ic_delete_white" IsVisible="{Binding BindingContext.IsAssigned, Source={Reference this}}" />
+        <controls:HideableToolbarItem Command="{Binding BindingContext.EditInterventionCommand, Source={Reference this}}" Icon="ic_edit_white.png" IsVisible="{Binding BindingContext.IsAssigned, Source={Reference this}}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="WhiteSmoke"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="Start">
+                <Label
+                    BackgroundColor="DeepSkyBlue"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    HeightRequest="30"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Intervention.Nom}"
+                    TextColor="White"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+                <Grid
+                    Padding="10,5,10,5"
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    RowSpacing="0"
+                    VerticalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{Binding Intervention.Client.Title}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="12"
+                        IsVisible="{Binding Intervention.Times, Converter={StaticResource HasDataConverter}}"
+                        Text="{Binding Intervention.Times}"
+                        TextColor="DimGray" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding Intervention.Priority, Converter={StaticResource PriorityToTextConverter}}"
+                        TextColor="OrangeRed" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding Intervention.Dates}"
+                        TextColor="DimGray" />
+                </Grid>
+                <controls:Separator
+                    BackgroundColor="Gray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    Padding="5"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsAssigned}"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <ImageButton
+                        Padding="2"
+                        BackgroundColor="{StaticResource NavigationPrimary}"
+                        Command="{Binding OpenInterventionDetailCommand}"
+                        CornerRadius="5"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding Intervention.Nonce, Converter={StaticResource HasDataConverter}}"
+                        Source="ic_description_white"
+                        VerticalOptions="Center" />
+                    <Label
+                        FontSize="12"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{Binding Intervention.Status}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Switch HorizontalOptions="End" IsToggled="{Binding IsDone}" />
+                </StackLayout>
+                <Button
+                    Margin="5"
+                    Padding="10,0,10,0"
+                    BackgroundColor="DeepSkyBlue"
+                    Command="{Binding AssignToMeCommand}"
+                    CornerRadius="5"
+                    FontAttributes="None"
+                    FontSize="12"
+                    HeightRequest="35"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsAssigned, Converter={StaticResource ReverseBoolConverter}}"
+                    Text="{ex:Translate Key=button_text_assign_to_me}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+                <controls:Separator
+                    BackgroundColor="Gray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    BackgroundColor="WhiteSmoke"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <StackLayout
+                        HeightRequest="35"
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewDetailCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{ex:Translate Key=label_text_detail}"
+                            TextColor="DimGray"
+                            VerticalOptions="CenterAndExpand" />
+                        <BoxView
+                            BackgroundColor="{Binding DetailTabColor}"
+                            HeightRequest="4"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsAssigned}"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewMediasCommand}" />
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{ex:Translate Key=label_text_media}"
+                            TextColor="DimGray"
+                            VerticalOptions="CenterAndExpand" />
+                        <BoxView
+                            BackgroundColor="{Binding MediaTabColor}"
+                            HeightRequest="4"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding DetailVisible}"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Grid
+                        Margin="0,5,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="0"
+                        VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            BackgroundColor="DeepSkyBlue"
+                            HeightRequest="25"
+                            HorizontalOptions="FillAndExpand">
+                            <Label
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_planned}"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Padding="5,0,5,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_dates}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.PlanningDates, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_hours}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.PlanningTime, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_working_time}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.PlanningHour, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_comment}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.PlanningComment, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <Label
+                                FontSize="11"
+                                IsVisible="{Binding Intervention.PlanningTasks, Converter={StaticResource HasDataConverter}}"
+                                Text="{ex:Translate Key=label_text_actions_2}"
+                                TextColor="Black" />
+                            <controls:ExtendedStackLayout
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding Intervention.PlanningTasks, Converter={StaticResource HasDataConverter}}"
+                                ItemsSource="{Binding Intervention.PlanningTasks}"
+                                Spacing="0">
+                                <controls:ExtendedStackLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label FontSize="11" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Task.Nom, StringFormat='{}- {0}'}" />
+                                                    <Span Text="{Binding PlanningMinute, Converter={StaticResource MinutesToTimeSpanConverter}, StringFormat='{} ({0:hh\\:mm})'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </DataTemplate>
+                                </controls:ExtendedStackLayout.ItemTemplate>
+                            </controls:ExtendedStackLayout>
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="DeepSkyBlue"
+                            HeightRequest="25"
+                            HorizontalOptions="FillAndExpand">
+                            <Label
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_done}"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Padding="5,0,5,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="0">
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_dates}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.DoneDates, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_hours}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.DoneTime, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_working_time}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.DoneHour, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label FontSize="11" Text="{ex:Translate Key=label_text_comment}" TextColor="Black" />
+                                <Label FontSize="11" Text="{Binding Intervention.DoneComment, StringFormat='{}: {0}', Converter={StaticResource EmptyTextConverter}}" TextColor="Black" />
+                            </StackLayout>
+                            <Label
+                                FontSize="11"
+                                IsVisible="{Binding Intervention.DoneTasks, Converter={StaticResource HasDataConverter}}"
+                                Text="{ex:Translate Key=label_text_actions_2}"
+                                TextColor="Black" />
+                            <controls:ExtendedStackLayout
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding Intervention.DoneTasks, Converter={StaticResource HasDataConverter}}"
+                                ItemsSource="{Binding Intervention.DoneTasks}"
+                                Spacing="0">
+                                <controls:ExtendedStackLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label FontSize="11" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Task.Nom, StringFormat='{}- {0}'}" />
+                                                    <Span Text="{Binding DoneMinute, Converter={StaticResource MinutesToTimeSpanConverter}, StringFormat='{} ({0:hh\\:mm})'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </DataTemplate>
+                                </controls:ExtendedStackLayout.ItemTemplate>
+                            </controls:ExtendedStackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <controls:ExpandableView
+                        x:Name="clientView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        Expanded="True"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_client}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference clientView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference clientView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding Intervention.Client, Converter={StaticResource HasDataConverter}}"
+                                    Spacing="0"
+                                    VerticalOptions="Start">
+                                    <StackLayout IsVisible="{Binding Intervention.Client.FullName, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_full_name}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.FullName, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.Title, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_title}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.Title, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.Societe, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_societe}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.Societe, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.Email, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_email}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.Email, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.PhoneMobile, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_phone}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.PhoneMobile, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.Fax, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_fax}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.Fax, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Client.Comment, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_comment}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Client.Comment, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding IsAssigned}" Orientation="Horizontal" Spacing="0">
+                                        <Label
+                                            FontSize="12"
+                                            IsVisible="{Binding Intervention.Client.Email, Converter={StaticResource HasDataConverter}}"
+                                            Text="{ex:Translate Key=label_text_send_mail_2}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                        <Switch IsToggled="{Binding Intervention.SendMail, Converter={StaticResource IntToBoolConverter}}" IsVisible="{Binding Intervention.Client.Email, Converter={StaticResource HasDataConverter}}" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                    <controls:ExpandableView
+                        x:Name="speakersView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        Expanded="True"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Intervention.ChildInterventions, Converter={StaticResource HasDataConverter}}"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_speakers}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference speakersView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference speakersView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <controls:ExtendedStackLayout
+                                    Padding="5"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{Binding Intervention.ChildInterventions}"
+                                    Spacing="0">
+                                    <controls:ExtendedStackLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout IsVisible="{Binding User.FullName, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                                <Label FontSize="12" Text="{Binding User.FullName, StringFormat='{}- {0}'}" TextColor="Black" />
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </controls:ExtendedStackLayout.ItemTemplate>
+                                </controls:ExtendedStackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                    <controls:ExpandableView
+                        x:Name="addressView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        Expanded="True"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_address}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference addressView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference addressView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding Intervention.Address, Converter={StaticResource HasDataConverter}}"
+                                    Spacing="0"
+                                    VerticalOptions="Start">
+                                    <StackLayout IsVisible="{Binding Intervention.Address.FullName, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_full_name}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Address.FullName, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Address.FullAddress, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_address}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Address.FullAddress, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding Intervention.Address.Comment, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="{ex:Translate Key=label_text_comment}" TextColor="Black" />
+                                        <Label FontSize="12" Text="{Binding Intervention.Address.Comment, StringFormat='{}: {0}'}" TextColor="Black" />
+                                    </StackLayout>
+                                    <StackLayout IsVisible="{Binding IsAssigned}" VerticalOptions="Start">
+                                        <Button
+                                            Margin="5,5,0,5"
+                                            Padding="10,0,10,0"
+                                            BackgroundColor="#47cec0"
+                                            Command="{Binding OpenMapCommand}"
+                                            CornerRadius="5"
+                                            FontAttributes="None"
+                                            FontSize="12"
+                                            HeightRequest="35"
+                                            HorizontalOptions="Start"
+                                            IsVisible="{Binding Intervention.Address.IsLocationSet}"
+                                            Text="{ex:Translate Key=button_text_open_map}"
+                                            TextColor="White" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+
+                    <controls:ExpandableView
+                        x:Name="contractView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        Expanded="True"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Intervention.Contract, Converter={StaticResource HasDataConverter}}"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="Contrat"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference addressView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference addressView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    Padding="5"
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding Intervention.Address, Converter={StaticResource HasDataConverter}}"
+                                    Spacing="0"
+                                    VerticalOptions="Start">
+                                    <StackLayout Orientation="Horizontal" Spacing="0">
+                                        <Label FontSize="12" Text="Contrat" TextColor="Black" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            Text="{Binding Intervention.Contract.Title, StringFormat='{}: {0}'}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+
+
+                    <controls:ExpandableView
+                        x:Name="productsView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Intervention.LinkInterventionProducts, Converter={StaticResource HasDataConverter}}"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_products}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference productsView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference productsView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" Spacing="0">
+                                    <controls:ExtendedStackLayout HorizontalOptions="FillAndExpand" ItemsSource="{Binding Intervention.LinkInterventionProducts}" Spacing="0">
+                                        <controls:ExtendedStackLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        FontAttributes="Bold"
+                                                        FontSize="12"
+                                                        HorizontalOptions="Start"
+                                                        Text="{Binding Quantity}"
+                                                        TextColor="Black"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        FontAttributes="Bold"
+                                                        FontSize="12"
+                                                        Text="{Binding MoreInfo}"
+                                                        TextColor="DimGray"
+                                                        VerticalOptions="Center" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </controls:ExtendedStackLayout.ItemTemplate>
+                                    </controls:ExtendedStackLayout>
+                                    <StackLayout
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding Source={Static local:AppSettings.MobileEnableProduct}}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="End">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            Text="Total HT"
+                                            TextColor="Black"
+                                            WidthRequest="80" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Intervention.TotalHC, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                            TextColor="Black"
+                                            WidthRequest="80" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        HorizontalOptions="EndAndExpand"
+                                        IsVisible="{Binding Source={Static local:AppSettings.MobileEnableProduct}}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="End">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            Text="Total TTC"
+                                            TextColor="Black"
+                                            WidthRequest="80" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Intervention.TotalTTC, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                            TextColor="Black"
+                                            WidthRequest="80" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                    <controls:ExpandableView
+                        x:Name="unitesView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Intervention.UniteLinks, Converter={StaticResource HasDataConverter}}"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_further_infomations}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference unitesView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference unitesView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <controls:ExtendedStackLayout
+                                    Padding="5"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{Binding Intervention.UniteLinks}"
+                                    Spacing="0">
+                                    <controls:ExtendedStackLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout IsVisible="{Binding UniteValue, Converter={StaticResource HasDataConverter}}" Orientation="Horizontal" Spacing="0">
+                                                <Label FontSize="12" Text="{Binding UniteTitle}" TextColor="Black" />
+                                                <Label FontSize="12" Text="{Binding UniteDisplay, StringFormat='{}: {0}'}" TextColor="Black" />
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </controls:ExtendedStackLayout.ItemTemplate>
+                                </controls:ExtendedStackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                    <controls:ExpandableView
+                        x:Name="attachmentsView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="False"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_attachments}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference attachmentsView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference attachmentsView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate />
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                    <controls:ExpandableView
+                        x:Name="historyView"
+                        Margin="0,5,0,0"
+                        Padding="0"
+                        BorderColor="LightGray"
+                        CornerRadius="0"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsAssigned}"
+                        VerticalOptions="Start">
+                        <controls:ExpandableView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    BackgroundColor="DeepSkyBlue"
+                                    HeightRequest="25"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontSize="12"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{ex:Translate Key=label_text_history}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Source={Reference historyView}}"
+                                        Source="ic_arrow_drop_up_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Image
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding Expanded, Converter={StaticResource ReverseBoolConverter}, Source={Reference historyView}}"
+                                        Source="ic_arrow_drop_down_white"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.HeaderTemplate>
+                        <controls:ExpandableView.ContentTemplate>
+                            <DataTemplate>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Button
+                                        Margin="5,5,0,5"
+                                        Padding="10,0,10,0"
+                                        BackgroundColor="#47cec0"
+                                        Command="{Binding ViewHistoryCommand}"
+                                        CornerRadius="5"
+                                        FontAttributes="None"
+                                        FontSize="12"
+                                        HeightRequest="35"
+                                        HorizontalOptions="Start"
+                                        Text="{ex:Translate Key=button_text_history}"
+                                        TextColor="White" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </controls:ExpandableView.ContentTemplate>
+                    </controls:ExpandableView>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding MediaVisible}"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <StackLayout
+                        Margin="5,10,5,10"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsAssigned}"
+                        Orientation="Horizontal"
+                        Spacing="2"
+                        VerticalOptions="Start">
+                        <Frame
+                            Padding="2,4,2,4"
+                            BackgroundColor="WhiteSmoke"
+                            BorderColor="Gray"
+                            CornerRadius="5"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding Source={Static local:AppSettings.MobileActiveTakePhoto}}"
+                            VerticalOptions="Start">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="0"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="Start"
+                                    Source="ic_camera_black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{ex:Translate Key=label_text_camera}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Padding="2,4,2,4"
+                            BackgroundColor="WhiteSmoke"
+                            BorderColor="Gray"
+                            CornerRadius="5"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding Source={Static local:AppSettings.MobileActivePickPhoto}}"
+                            VerticalOptions="Start">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PickPhotoCommand}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="0"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="Start"
+                                    Source="ic_folder_black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{ex:Translate Key=label_text_library}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Padding="2,4,2,4"
+                            BackgroundColor="WhiteSmoke"
+                            BorderColor="Gray"
+                            CornerRadius="5"
+                            HasShadow="False"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding Source={Static local:AppSettings.MobileActiveSignature}}"
+                            VerticalOptions="Start">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SignatureCommand}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="0"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="Start"
+                                    Source="ic_create_black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{ex:Translate Key=label_text_signature}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <controls:RepeaterView
+                        HorizontalOptions="Center"
+                        HorizontalScrollBarVisibility="Never"
+                        IsVisible="{Binding IsAssigned}"
+                        ItemsSource="{Binding Intervention.MediaLinks}"
+                        Orientation="Horizontal"
+                        Spacing="5">
+                        <controls:RepeaterView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Padding="2"
+                                    BorderColor="Gray"
+                                    CornerRadius="3"
+                                    HasShadow="False"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding IsActif, Converter={StaticResource IntToBoolConverter}}"
+                                    WidthRequest="100">
+                                    <StackLayout Spacing="0">
+                                        <ffimageloading:CachedImage
+                                            Aspect="AspectFit"
+                                            HeightRequest="100"
+                                            Source="{Binding Media.ImageDisplay}"
+                                            VerticalOptions="FillAndExpand"
+                                            WidthRequest="100">
+                                            <ffimageloading:CachedImage.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.ViewMediaCommand, Source={Reference this}}" CommandParameter="{Binding .}" />
+                                            </ffimageloading:CachedImage.GestureRecognizers>
+                                        </ffimageloading:CachedImage>
+                                        <Button
+                                            Padding="0"
+                                            BackgroundColor="Red"
+                                            Command="{Binding BindingContext.DeleteMediaCommand, Source={Reference this}}"
+                                            CommandParameter="{Binding .}"
+                                            FontAttributes="None"
+                                            FontSize="10"
+                                            HeightRequest="30"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{ex:Translate Key=button_text_delete}"
+                                            TextColor="White"
+                                            VerticalOptions="End" />
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </controls:RepeaterView.ItemTemplate>
+                    </controls:RepeaterView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

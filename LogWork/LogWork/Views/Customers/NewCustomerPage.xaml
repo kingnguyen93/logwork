@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Customers.NewCustomerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CancelCommand}" Text="{ex:Translate Key=text_cancel}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Placeholder="{ex:Translate Key=entry_hint_client}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Title}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Placeholder="{ex:Translate Key=entry_hint_societe}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Societe}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Placeholder="{ex:Translate Key=entry_hint_prenom}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Prenom}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Placeholder="{ex:Translate Key=entry_hint_nom}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Nom}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Email"
+                    Placeholder="{ex:Translate Key=entry_hint_email}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Email}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Telephone"
+                    Placeholder="{ex:Translate Key=entry_hint_phone}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.PhoneFixe}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Telephone"
+                    Placeholder="{ex:Translate Key=entry_hint_fax}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Fax}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Editor
+                    Margin="16,10,16,0"
+                    AutoSize="TextChanges"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="{ex:Translate Key=entry_hint_comment}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Client.Comment}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Editor.Effects>
+                        <effects:RoundedEffect />
+                    </Editor.Effects>
+                </Editor>
+                <Button
+                    Margin="16,10,16,10"
+                    BackgroundColor="#47cec0"
+                    BorderColor="#47cec0"
+                    Command="{Binding SaveCustomerCommand}"
+                    CornerRadius="0"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_save}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

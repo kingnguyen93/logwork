@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Quotes.AddProductPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.Behaviors"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_add_a_product}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CancelSearchCommand}" Text="{ex:Translate Key=label_text_cancel}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout
+                Padding="16,10,16,10"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="Start">
+                <!--  Product  -->
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_product_name}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Text="{Binding Product.Label}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                </controls:ExtendedEntry>
+                <StackLayout
+                    Margin="0,5,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        Text="{ex:Translate Key=label_text_or}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="40" />
+                    <Button
+                        Padding="0"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        BorderWidth="1"
+                        Command="{Binding SearchProductCommand}"
+                        CornerRadius="2"
+                        FontSize="14"
+                        HeightRequest="35"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{ex:Translate Key=label_text_search_existing_product}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <!--  Quantity  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_quantity}"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Button
+                        Padding="0"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        BorderWidth="1"
+                        Command="{Binding DecreaseProductQuantityCommand}"
+                        CornerRadius="2"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HeightRequest="40"
+                        Text="-"
+                        TextColor="Black"
+                        WidthRequest="40" />
+                    <controls:ExtendedEntry
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        Keyboard="Numeric"
+                        Text="{Binding Product.Quantity}"
+                        TextColor="Black"
+                        VerticalOptions="Center">
+                        <controls:ExtendedEntry.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedEntry.Effects>
+                        <controls:ExtendedEntry.Behaviors>
+                            <behaviors:NumericValidatorBehavior />
+                        </controls:ExtendedEntry.Behaviors>
+                    </controls:ExtendedEntry>
+                    <Button
+                        Padding="0"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        BorderWidth="1"
+                        Command="{Binding IncreaseProductQuantityCommand}"
+                        CornerRadius="2"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HeightRequest="40"
+                        Text="+"
+                        TextColor="Black"
+                        WidthRequest="40" />
+                </StackLayout>
+                <!--  Price Tax  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_price_without_tax}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Numeric"
+                    Text="{Binding Product.PriceUnit}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                    <controls:ExtendedEntry.Behaviors>
+                        <behaviors:NumericValidatorBehavior />
+                    </controls:ExtendedEntry.Behaviors>
+                </controls:ExtendedEntry>
+                <!--  Tax  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_tax_rate}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Numeric"
+                    Text="{Binding Product.RateOfTax}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                    <controls:ExtendedEntry.Behaviors>
+                        <behaviors:NumericValidatorBehavior />
+                    </controls:ExtendedEntry.Behaviors>
+                </controls:ExtendedEntry>
+                <!--  Discount  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_discount_percent}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Numeric"
+                    Text="{Binding Product.PercentDiscount}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                    <controls:ExtendedEntry.Behaviors>
+                        <behaviors:NumericValidatorBehavior />
+                    </controls:ExtendedEntry.Behaviors>
+                </controls:ExtendedEntry>
+                <!--  Summary  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_summary}"
+                    VerticalOptions="Start" />
+                <Frame
+                    Padding="8"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="LightGray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <StackLayout HorizontalOptions="FillAndExpand" Spacing="2">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{ex:Translate Key=label_text_total_ht}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Product.TotalPrice, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                WidthRequest="100" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{ex:Translate Key=label_text_tva}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Product.AmountOfTax, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                WidthRequest="100" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{ex:Translate Key=label_text_discount}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Product.TotalDiscount, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                WidthRequest="100" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{ex:Translate Key=label_text_total_ttc}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Product.TotalPriceWithTax, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                WidthRequest="100" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="End"
+                                Text="{ex:Translate Key=label_text_total_payment}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Text="{Binding Product.TotalPayment, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!--  Button Save  -->
+                <Button
+                    Margin="0,5,0,0"
+                    BackgroundColor="#47cec0"
+                    BorderColor="#47cec0"
+                    Command="{Binding AddProductCommand}"
+                    CornerRadius="0"
+                    FontSize="16"
+                    HeightRequest="45"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_add_product}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

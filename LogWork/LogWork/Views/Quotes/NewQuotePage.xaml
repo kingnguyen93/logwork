@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Quotes.NewQuotePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout
+                Padding="16,10,16,10"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="Start">
+                <!--  Customer  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_customers}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    CanFocus="False"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    OnFocusedCommand="{Binding OnClientFocusedCommand}"
+                    Placeholder="{ex:Translate Key=label_text_customers}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Quote.Client.Title}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                </controls:ExtendedEntry>
+                <!--  Address  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=entry_hint_adresse}"
+                    VerticalOptions="Start" />
+                <controls:ExtendedEntry
+                    CanFocus="False"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="true"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    OnFocusedCommand="{Binding OnAddresseFocusedCommand}"
+                    Placeholder="{ex:Translate Key=entry_hint_adresse}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Quote.Address.FullAddress}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                </controls:ExtendedEntry>
+                <!--  Date  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_date}"
+                    VerticalOptions="Start" />
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <controls:ExtendedDatePicker
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Date="{Binding IDate}"
+                        FontSize="14"
+                        Format="dd/MM/yyyy"
+                        TextColor="Black"
+                        UnFocusedCommand="{Binding IDateUnFocusedCommand}">
+                        <controls:ExtendedDatePicker.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedDatePicker.Effects>
+                    </controls:ExtendedDatePicker>
+                    <controls:ExtendedEntry
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        CanFocus="False"
+                        FontSize="14"
+                        InputTransparent="True"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        Text="{Binding Quote.IDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                        TextColor="Black">
+                        <controls:ExtendedEntry.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedEntry.Effects>
+                    </controls:ExtendedEntry>
+                </AbsoluteLayout>
+                <!--  Due Date  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_due_date}"
+                    VerticalOptions="Start" />
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <controls:ExtendedDatePicker
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Date="{Binding IDueDate}"
+                        FontSize="14"
+                        Format="dd/MM/yyyy"
+                        TextColor="Black"
+                        UnFocusedCommand="{Binding IDueDateUnFocusedCommand}">
+                        <controls:ExtendedDatePicker.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedDatePicker.Effects>
+                    </controls:ExtendedDatePicker>
+                    <controls:ExtendedEntry
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        CanFocus="False"
+                        FontSize="14"
+                        InputTransparent="True"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        Text="{Binding Quote.IDueDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                        TextColor="Black">
+                        <controls:ExtendedEntry.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedEntry.Effects>
+                    </controls:ExtendedEntry>
+                </AbsoluteLayout>
+                <!--  Reference  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_reference}"
+                    VerticalOptions="Start" />
+                <Entry
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Quote.Reference}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <!--  Products  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_products}"
+                    VerticalOptions="Start" />
+                <Frame
+                    Padding="8"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddProductCommand}" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{ex:Translate Key=label_text_add_product}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </Frame>
+                <controls:ExtendedStackLayout
+                    Margin="0,5,0,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding Quote.LinkInvoiceProducts}"
+                    Spacing="5"
+                    VerticalOptions="Start">
+                    <controls:ExtendedStackLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="5"
+                                BackgroundColor="WhiteSmoke"
+                                BorderColor="LightGray"
+                                CornerRadius="5"
+                                HasShadow="False"
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding IsActif, Converter={StaticResource IntToBoolConverter}}">
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Label
+                                        FontSize="14"
+                                        HorizontalOptions="CenterAndExpand"
+                                        TextColor="Black"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Label}" />
+                                                <Span Text="{Binding Quantity, StringFormat='{} ({0:###,###,###,##0.##})'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="End"
+                                        Source="ic_close_black"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.DeleteProductCommand, Source={Reference this}}" CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:ExtendedStackLayout.ItemTemplate>
+                </controls:ExtendedStackLayout>
+                <!--  Comment  -->
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_private_comment}"
+                    VerticalOptions="Start" />
+                <Frame
+                    Padding="2"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Editor
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Quote.PrivateComment}"
+                        TextColor="Black"
+                        VerticalOptions="FillAndExpand">
+                        <Editor.Effects>
+                            <effects:BorderlessEffect />
+                        </Editor.Effects>
+                    </Editor>
+                </Frame>
+                <Label
+                    Margin="0,5,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_public_comment}"
+                    VerticalOptions="Start" />
+                <Frame
+                    Padding="2"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Editor
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Quote.PublicComment}"
+                        TextColor="Black"
+                        VerticalOptions="FillAndExpand">
+                        <Editor.Effects>
+                            <effects:BorderlessEffect />
+                        </Editor.Effects>
+                    </Editor>
+                </Frame>
+                <!--  Button Save  -->
+                <Button
+                    Margin="0,5,0,0"
+                    BackgroundColor="#47cec0"
+                    BorderColor="#47cec0"
+                    Command="{Binding SaveQuoteCommand}"
+                    CornerRadius="0"
+                    FontSize="16"
+                    HeightRequest="45"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_save}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.About.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:constants="clr-namespace:LogWork.Constants"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_about}">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="WhiteSmoke"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Image
+                Margin="0,20,0,0"
+                HeightRequest="150"
+                HorizontalOptions="Center"
+                Source="{ex:ImageResource Key=organilog_logo.png}"
+                VerticalOptions="Start" />
+            <Label
+                Margin="0,20,0,0"
+                FontSize="16"
+                HorizontalOptions="Center"
+                Text="{Binding Source={x:Static constants:ApiURI.APP_VERSION_NUMBER}, StringFormat='{}Version {0}'}"
+                TextColor="Black"
+                VerticalOptions="Start" />
+            <Label
+                Margin="0,20,0,0"
+                FontSize="16"
+                HorizontalOptions="Center"
+                Text="LogWork"
+                TextColor="DeepSkyBlue"
+                TextDecorations="Underline"
+                VerticalOptions="Start" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

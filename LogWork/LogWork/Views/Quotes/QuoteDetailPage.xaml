@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Quotes.QuoteDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding DeleteQuoteCommand}" Icon="ic_delete_white" />
+        <ToolbarItem Command="{Binding EditQuoteCommand}" Icon="ic_edit_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="Start">
+                <!--  ID  -->
+                <Label
+                    BackgroundColor="DeepSkyBlue"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HeightRequest="35"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding InvoiceID}"
+                    TextColor="White"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+                <!--  Client info  -->
+                <StackLayout
+                    Padding="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="{Binding Quote.Client.Title}" />
+                    <Label
+                        FontAttributes="Italic"
+                        FontSize="14"
+                        Text="{Binding Quote.Address.FullAddress}" />
+                </StackLayout>
+                <!--  Dates  -->
+                <controls:Separator
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    Margin="10,5,10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{ex:Translate Key=label_text_quote_date}"
+                        TextColor="DimGray" />
+                    <Label
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding Quote.IDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                        TextColor="DimGray" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{ex:Translate Key=label_text_expiration_date}"
+                        TextColor="DimGray" />
+                    <Label
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding Quote.IDueDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                        TextColor="DimGray" />
+                </StackLayout>
+                <!--  Comment  -->
+                <controls:Separator
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    Margin="10,5,10,5"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{ex:Translate Key=label_text_private_comment}"
+                        TextColor="DimGray" />
+                    <Label
+                        FontSize="12"
+                        Text="{Binding Quote.PrivateComment}"
+                        TextColor="DimGray" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{ex:Translate Key=label_text_public_comment}"
+                        TextColor="DimGray" />
+                    <Label
+                        FontSize="12"
+                        Text="{Binding Quote.PublicComment}"
+                        TextColor="DimGray" />
+                </StackLayout>
+                <!--  Quote status  -->
+                <controls:Separator
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    Margin="10,5,10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding Quote.Status}"
+                        TextColor="{Binding Quote.StatusNumber, Converter={StaticResource StatusToColor}}" />
+                </StackLayout>
+                <!--  Summary  -->
+                <StackLayout
+                    Margin="10,0,10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="Total HT" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding Quote.CachePtHt, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                        WidthRequest="80" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0,10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="TVA" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding Quote.CachePtTax, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                        WidthRequest="80" />
+                </StackLayout>
+                <StackLayout
+                    Margin="10,0,10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="End"
+                        Text="Total TTC" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding Quote.CachePtTtcToPay, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                        WidthRequest="80" />
+                </StackLayout>
+                <!--  Product  -->
+                <Frame
+                    Margin="-1,5,-1,0"
+                    Padding="10,8,10,8"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="LightGray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="{ex:Translate Key=label_text_products}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <controls:ExtendedStackLayout
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding Quote.LinkInvoiceProducts}"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <controls:ExtendedStackLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+                                <controls:Separator
+                                    BackgroundColor="LightGray"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Start" />
+                                <Grid Padding="10,5,5,5" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        Text="{Binding Label}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontSize="12"
+                                        Text="{Binding ProQuantityPrice}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontSize="12"
+                                        Text="{Binding RateOfTax, StringFormat='{}Tax rate: {0:###,###,###,##0.##}%'}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="Total HT"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="TVA"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="Total TTC"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding TotalPrice, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding AmountOfTax, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding TotalPriceWithTax, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </controls:ExtendedStackLayout.ItemTemplate>
+                </controls:ExtendedStackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

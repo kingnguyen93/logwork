@@ -1,0 +1,1056 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="alert_message_assigning" xml:space="preserve">
+    <value>Assigning...</value>
+  </data>
+  <data name="alert_message_assigning_intervention" xml:space="preserve">
+    <value>Assigning intervention...</value>
+  </data>
+  <data name="alert_message_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="alert_message_delete_intervention_confirm" xml:space="preserve">
+    <value>Are you sure to delele this Intervention?</value>
+  </data>
+  <data name="alert_message_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="alert_message_intervention_already_assigned" xml:space="preserve">
+    <value>Intervention already assigned</value>
+  </data>
+  <data name="alert_message_intervention_assigned" xml:space="preserve">
+    <value>Intervention assigned</value>
+  </data>
+  <data name="alert_message_log_out_confirm" xml:space="preserve">
+    <value>Are you sure to log out?</value>
+  </data>
+  <data name="alert_message_no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="alert_message_ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="alert_message_sync_completed" xml:space="preserve">
+    <value>Sync Completed</value>
+  </data>
+  <data name="alert_message_sync_failed" xml:space="preserve">
+    <value>Sync Failed</value>
+  </data>
+  <data name="alert_message_try_again" xml:space="preserve">
+    <value>Please try again</value>
+  </data>
+  <data name="alert_message_wrong_user_credentials" xml:space="preserve">
+    <value>Wrong user credentials</value>
+  </data>
+  <data name="alert_message_yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="alert_title_authentication_fail" xml:space="preserve">
+    <value>Authentication failed</value>
+  </data>
+  <data name="alert_title_error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="alert_title_intervention" xml:space="preserve">
+    <value>Intervention</value>
+  </data>
+  <data name="alert_title_log_in" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="alert_title_log_out" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="alert_title_server_error" xml:space="preserve">
+    <value>Server Error</value>
+  </data>
+  <data name="button_text_add_an_intervention" xml:space="preserve">
+    <value>Add an intervention</value>
+  </data>
+  <data name="button_text_add_an_quote" xml:space="preserve">
+    <value>Add a quote</value>
+  </data>
+  <data name="button_text_assign_to_me" xml:space="preserve">
+    <value>Assign to me</value>
+  </data>
+  <data name="button_text_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="button_text_open_map" xml:space="preserve">
+    <value>Open Map</value>
+  </data>
+  <data name="button_text_reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="button_text_save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="button_text_send_email" xml:space="preserve">
+    <value>Send Email</value>
+  </data>
+  <data name="button_text_sign_in" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="content_message_synchronizing" xml:space="preserve">
+    <value>Synchronizing</value>
+  </data>
+  <data name="entry_hint_account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="entry_hint_adresse" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="entry_hint_client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="entry_hint_contract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="page_title_search_contract" xml:space="preserve">
+    <value>Search a contract</value>
+  </data>
+  <data name="entry_hint_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="entry_hint_search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="entry_hint_title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="entry_hint_user_name" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="error_fulfill_login" xml:space="preserve">
+    <value>You must fill every field and try again</value>
+  </data>
+  <data name="home_menu_title_about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="home_menu_title_addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="home_menu_title_customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="home_menu_title_interventions" xml:space="preserve">
+    <value>Interventions</value>
+  </data>
+  <data name="home_menu_title_interventions_not_assigned" xml:space="preserve">
+    <value>Interventions not assigned</value>
+  </data>
+  <data name="home_menu_title_log_out" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="home_menu_title_messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="home_menu_title_settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="home_menu_title_tracking" xml:space="preserve">
+    <value>Tracking</value>
+  </data>
+  <data name="home_menu_title_quote" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="home_menu_title_invoice" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="intervention_status_completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="intervention_status_in_progress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="in_progress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="label_text_contract" xml:space="preserve">
+    <value>contract</value>
+  </data>
+  <data name="label_text_action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="label_text_actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="label_text_address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="label_text_attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="label_text_begin" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="label_text_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="label_text_client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="label_text_comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="label_text_private_comment" xml:space="preserve">
+    <value>Private Comment</value>
+  </data>
+  <data name="label_text_public_comment" xml:space="preserve">
+    <value>Public Comment</value>
+  </data>
+  <data name="label_text_completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="label_text_done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="label_text_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="label_text_end" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="label_text_fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="label_text_files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="label_text_filiale" xml:space="preserve">
+    <value>Filiale</value>
+  </data>
+  <data name="label_text_full_name" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="label_text_further_info" xml:space="preserve">
+    <value>Further info</value>
+  </data>
+  <data name="label_text_history" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="label_text_hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="label_text_in_progress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="label_text_media" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="label_text_phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="label_text_pick_photo" xml:space="preserve">
+    <value>Pick Photo</value>
+  </data>
+  <data name="label_text_planned" xml:space="preserve">
+    <value>Planned</value>
+  </data>
+  <data name="label_text_products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="label_text_signature" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="label_text_societe" xml:space="preserve">
+    <value>Societe</value>
+  </data>
+  <data name="label_text_take_photo" xml:space="preserve">
+    <value>Take photo</value>
+  </data>
+  <data name="label_text_title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="label_text_working_time" xml:space="preserve">
+    <value>Working time</value>
+  </data>
+  <data name="page_title_about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="page_title_addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="page_title_customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="page_title_edit_intervention" xml:space="preserve">
+    <value>Edit Intervention</value>
+  </data>
+  <data name="page_title_interventions" xml:space="preserve">
+    <value>Interventions</value>
+  </data>
+  <data name="page_title_interventions_not_assigned" xml:space="preserve">
+    <value>Interventions Not Assigned</value>
+  </data>
+  <data name="page_title_login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="page_title_messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="page_title_new_intervention" xml:space="preserve">
+    <value>New Intervention</value>
+  </data>
+  <data name="page_title_new_quote" xml:space="preserve">
+    <value>New Quote</value>
+  </data>
+  <data name="page_title_search_address" xml:space="preserve">
+    <value>Search Address</value>
+  </data>
+  <data name="page_title_search_client" xml:space="preserve">
+    <value>Search Client</value>
+  </data>
+  <data name="page_title_settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="page_title_signature" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="page_title_tracking" xml:space="preserve">
+    <value>Tracking</value>
+  </data>
+  <data name="picker_title_select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="button_text_history" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="label_text_further_infomations" xml:space="preserve">
+    <value>Further infomations</value>
+  </data>
+  <data name="page_title_histoty" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="label_text_date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="alert_message_get_history" xml:space="preserve">
+    <value>Getting history...</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="label_text_dates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="label_text_due_date" xml:space="preserve">
+    <value>Due Date</value>
+  </data>
+  <data name="label_text_reference" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="alert_message_send_mail_successed" xml:space="preserve">
+    <value>Send mail successed</value>
+  </data>
+  <data name="loading_text_loggin" xml:space="preserve">
+    <value>Logging..</value>
+  </data>
+  <data name="alert_message_cant_send_email" xml:space="preserve">
+    <value>Can't send email. Make sure you have a email logged in this device.</value>
+  </data>
+  <data name="alert_message_bad_connection" xml:space="preserve">
+    <value>Bad Connection Error. Try Again.</value>
+  </data>
+  <data name="alert_message_server_error" xml:space="preserve">
+    <value>Server Error. Please try again in 1 minute.</value>
+  </data>
+  <data name="button_text_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="alert_message_intervention_no_client" xml:space="preserve">
+    <value>You must select an Client</value>
+  </data>
+  <data name="search_hint_input_customer" xml:space="preserve">
+    <value>Input name to search customer</value>
+  </data>
+  <data name="button_text_add_new_customer" xml:space="preserve">
+    <value>Add new customer</value>
+  </data>
+  <data name="label_text_addresses" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
+  <data name="label_text_city" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="label_text_postal_code" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="label_text_street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="label_text_interventions" xml:space="preserve">
+    <value>Interventions</value>
+  </data>
+  <data name="label_text_infomations" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="label_text_status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="button_text_add_new_address" xml:space="preserve">
+    <value>Add new address</value>
+  </data>
+  <data name="address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="label_text_customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="label_text_latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="label_text_longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="search_hint_input_address" xml:space="preserve">
+    <value>Input name to search address</value>
+  </data>
+  <data name="label_text_view" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="text_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="page_title_edit_customer" xml:space="preserve">
+    <value>Edit Customer</value>
+  </data>
+  <data name="page_title_new_customer" xml:space="preserve">
+    <value>New Customer</value>
+  </data>
+  <data name="entry_hint_comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="entry_hint_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="entry_hint_fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="entry_hint_nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="entry_hint_phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="entry_hint_prenom" xml:space="preserve">
+    <value>Prenom</value>
+  </data>
+  <data name="entry_hint_societe" xml:space="preserve">
+    <value>Societe</value>
+  </data>
+  <data name="page_title_new_address" xml:space="preserve">
+    <value>New Address</value>
+  </data>
+  <data name="entry_hint_address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="entry_hint_code_postal" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="entry_hint_code_ville" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="page_title_new_message" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="label_text_to_2" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="label_text_title_2" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="page_title_search_user" xml:space="preserve">
+    <value>Search User</value>
+  </data>
+  <data name="label_text_to" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="label_text_send_mail" xml:space="preserve">
+    <value>Send mail</value>
+  </data>
+  <data name="MOBILE_CAN_EDIT_CLIENT_ADRESSE" xml:space="preserve">
+    <value>Client / address modification</value>
+  </data>
+  <data name="MOBILE_CAN_EDIT_DATES" xml:space="preserve">
+    <value>Change / edit dates</value>
+  </data>
+  <data name="MOBILE_CAN_EDIT_HOURS" xml:space="preserve">
+    <value>Change hours</value>
+  </data>
+  <data name="MOBILE_CAN_EDIT_USERS" xml:space="preserve">
+    <value>Users modification</value>
+  </data>
+  <data name="MOBILE_CAN_SEARCH_PRODUCT" xml:space="preserve">
+    <value>Enable product</value>
+  </data>
+  <data name="MOBILE_ACTIVATE_SEARCH_PHOTO" xml:space="preserve">
+    <value>Enable pick photo</value>
+  </data>
+  <data name="MOBILE_ACTIVATE_TAKE_PHOTO" xml:space="preserve">
+    <value>Enable take photo</value>
+  </data>
+  <data name="MOBILE_ACTIVATE_TAKE_SIGNATURE" xml:space="preserve">
+    <value>Enable signature</value>
+  </data>
+  <data name="MOBILE_DISPLAY_CHRONO" xml:space="preserve">
+    <value>Show stopwatch</value>
+  </data>
+  <data name="MOBILE_DISPLAY_FIELD_TITLE" xml:space="preserve">
+    <value>Enable title</value>
+  </data>
+  <data name="MOBILE_DISPLAY_HOME_INTERVENTION_ADRESSE" xml:space="preserve">
+    <value>Show "address"</value>
+  </data>
+  <data name="MOBILE_DISPLAY_HOME_INTERVENTION_CLIENT" xml:space="preserve">
+    <value>Show "client"</value>
+  </data>
+  <data name="MOBILE_DISPLAY_HOME_INTERVENTION_PRIORITY" xml:space="preserve">
+    <value>Show "priority"</value>
+  </data>
+  <data name="MOBILE_DISPLAY_HOME_INTERVENTION_TITLE" xml:space="preserve">
+    <value>Show "title"</value>
+  </data>
+  <data name="MOBILE_DISPLAY_HOME_INTERVENTION_TOGGLE_PROGRESS" xml:space="preserve">
+    <value>Show "in progress"</value>
+  </data>
+  <data name="MOBILE_DISPLAY_MAP" xml:space="preserve">
+    <value>Enable map</value>
+  </data>
+  <data name="MOBILE_ENABLE_PRODUCT" xml:space="preserve">
+    <value>Enable product prices</value>
+  </data>
+  <data name="APP_FONT_SIZE" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="MOBILE_HOUR_START_DEFAULT" xml:space="preserve">
+    <value>Starting hour of day</value>
+  </data>
+  <data name="MOBILE_HOUR_START_ENABLE" xml:space="preserve">
+    <value>Enable start time</value>
+  </data>
+  <data name="APP_LAST_SYNCHRO" xml:space="preserve">
+    <value>Last sync data</value>
+  </data>
+  <data name="APP_LAST_SYNCHRO_PRODUCT" xml:space="preserve">
+    <value>Last sync product</value>
+  </data>
+  <data name="APP_MEDIA_SIZE_MAX" xml:space="preserve">
+    <value>Max size of photo</value>
+  </data>
+  <data name="MOBILE_NOTIF_INTERVENTION" xml:space="preserve">
+    <value>New intervention</value>
+  </data>
+  <data name="MOBILE_NOTIF_MESSAGE" xml:space="preserve">
+    <value>New message</value>
+  </data>
+  <data name="APP_PURGE_DATA" xml:space="preserve">
+    <value>Purging old data</value>
+  </data>
+  <data name="MOBILE_REPORTER_INTERVENTIONS_DEFAULT" xml:space="preserve">
+    <value>Display intervention not done</value>
+  </data>
+  <data name="MOBILE_SEND_MAIL" xml:space="preserve">
+    <value>Enable send email to customer</value>
+  </data>
+  <data name="APP_LANGUAGE" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="CATEGORY_HOURS_WORKED" xml:space="preserve">
+    <value>Hours worked</value>
+  </data>
+  <data name="CATEGORY_LANGUAGES" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="CATEGORY_LIST_OF_INTERVENTIONS" xml:space="preserve">
+    <value>List of interventions</value>
+  </data>
+  <data name="CATEGORY_MODIFY_AN_INTERVENTION" xml:space="preserve">
+    <value>Modify an intervention</value>
+  </data>
+  <data name="CATEGORY_NOTIFICATIONS" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="CATEGORY_SYNCHRONIZATION" xml:space="preserve">
+    <value>Synchronisation</value>
+  </data>
+  <data name="CATEGORY_VIEW_INTERVENTIONS" xml:space="preserve">
+    <value>View an intervention</value>
+  </data>
+  <data name="CATEGORY_VISUAL" xml:space="preserve">
+    <value>Visual</value>
+  </data>
+  <data name="CATEGORY_NO_CATEGORY" xml:space="preserve">
+    <value>No category</value>
+  </data>
+  <data name="label_text_send_mail_2" xml:space="preserve">
+    <value>Send mail:</value>
+  </data>
+  <data name="label_text_users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="label_text_actions_2" xml:space="preserve">
+    <value>Actions:</value>
+  </data>
+  <data name="DESCRIPTION_APP_LANGUAGE" xml:space="preserve">
+    <value>App's language</value>
+  </data>
+  <data name="DESCRIPTION_APP_LAST_SYNCHRO" xml:space="preserve">
+    <value>Reset of the date of last synchronization</value>
+  </data>
+  <data name="DESCRIPTION_APP_LAST_SYNCHRO_PRODUCT" xml:space="preserve">
+    <value>Reset of the date of last synchronization of product</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_ACTIVATE_SEARCH_PHOTO" xml:space="preserve">
+    <value>Show the button to search the mobile support library</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_ACTIVATE_TAKE_PHOTO" xml:space="preserve">
+    <value>Show button to take a picture</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_ACTIVATE_TAKE_SIGNATURE" xml:space="preserve">
+    <value>Show the button to take a signature</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_CAN_EDIT_CLIENT_ADDRESS" xml:space="preserve">
+    <value>When modifying an intervention, you can modify the client or address</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_CAN_EDIT_DATES" xml:space="preserve">
+    <value>Can not manually change start date and end date</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_CAN_EDIT_HOURS" xml:space="preserve">
+    <value>Manually change start time, end time and work time</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_CAN_EDIT_USERS" xml:space="preserve">
+    <value>When modifying an intervention, you can modify the speakers</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_CAN_SEARCH_PRODUCT" xml:space="preserve">
+    <value>(Functionality in Lab): Add or modify products</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_CHRONO" xml:space="preserve">
+    <value>Show / hide stopwatch</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_FIELD_TITLE" xml:space="preserve">
+    <value>Show or hide the title field when adding or editing an intervention</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_ADDRESS" xml:space="preserve">
+    <value>Show address of interventions on the daily list</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_CLIENT" xml:space="preserve">
+    <value>Show client of interventions on the daily list</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_PRIORITY" xml:space="preserve">
+    <value>Show priority of interventions on the daily list</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_TITLE" xml:space="preserve">
+    <value>Display the title of the interventions on the daily list</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_TOGGLE_PROGRESS" xml:space="preserve">
+    <value>Add "in progress" status for interventions</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_DISPLAY_MAP" xml:space="preserve">
+    <value>Show button to access address geolocation</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_ENABLE_PRODUCT" xml:space="preserve">
+    <value>(Functionality in lab): Show prices and total for products</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_HOUR_START_DEFAULT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DESCRIPTION_MOBILE_HOUR_START_ENABLE" xml:space="preserve">
+    <value>Force a minimum hour for the start of the day</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_NOTIF_INTERVENTION" xml:space="preserve">
+    <value>Be notified of each new intervention</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_NOTIF_MESSAGE" xml:space="preserve">
+    <value>Be notified of each new message</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_REPORTER_INTERVENTIONS" xml:space="preserve">
+    <value>Re-displays on the current date all non-performed interventions</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_SEND_MAIL" xml:space="preserve">
+    <value>Show a button to send the report of the intervention by email to the customer</value>
+  </data>
+  <data name="APP_RESET_DATA" xml:space="preserve">
+    <value>Reset data</value>
+  </data>
+  <data name="DESCRIPTION_APP_RESET_DATA" xml:space="preserve">
+    <value>Clear all data and reset date of last synchronization to zero</value>
+  </data>
+  <data name="MESSAGE_APP_LAST_SYNCHRO" xml:space="preserve">
+    <value>Are you sure to reset the date of last synchronization?</value>
+  </data>
+  <data name="MESSAGE_APP_LAST_SYNCHRO_PRODUCT" xml:space="preserve">
+    <value>Are you sure to reset the date of last synchronization of product?</value>
+  </data>
+  <data name="MESSAGE_APP_RESET_DATA" xml:space="preserve">
+    <value>Are you sure to reset all data?</value>
+  </data>
+  <data name="label_text_current_value_2" xml:space="preserve">
+    <value>Current value:</value>
+  </data>
+  <data name="alert_message_intervention_no_address" xml:space="preserve">
+    <value>You must select an Address</value>
+  </data>
+  <data name="page_title_search_product" xml:space="preserve">
+    <value>Search Product</value>
+  </data>
+  <data name="label_text_add_product" xml:space="preserve">
+    <value>Add product</value>
+  </data>
+  <data name="alert_message_intervention_assign_error" xml:space="preserve">
+    <value>There may be an error in the process of attaching intervention to you</value>
+  </data>
+  <data name="alert_message_get_location_error" xml:space="preserve">
+    <value>There may be an error in getting location</value>
+  </data>
+  <data name="en_US" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="fr_FR" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="page_title_intervention_detail" xml:space="preserve">
+    <value>Intervention Detail</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="label_text_mins" xml:space="preserve">
+    <value>Mins</value>
+  </data>
+  <data name="label_text_detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="label_text_camera" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="label_text_library" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="APP_LAST_SYNCHRO_INVOICE" xml:space="preserve">
+    <value>Last sync invoice</value>
+  </data>
+  <data name="DESCRIPTION_APP_LAST_SYNCHRO_INVOICE" xml:space="preserve">
+    <value>Reset of the date of last synchronization of invoice</value>
+  </data>
+  <data name="MESSAGE_APP_LAST_SYNCHRO_INVOICE" xml:space="preserve">
+    <value>Are you sure to reset the date of last synchronization of invoice?</value>
+  </data>
+  <data name="page_title_invoices" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="search_hint_search" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="page_title_invoice_detail" xml:space="preserve">
+    <value>Invoice detail</value>
+  </data>
+  <data name="page_title_quotes" xml:space="preserve">
+    <value>Quotes</value>
+  </data>
+  <data name="page_title_add_a_product" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="button_text_add_product" xml:space="preserve">
+    <value>Add product</value>
+  </data>
+  <data name="label_text_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="label_text_price_without_tax" xml:space="preserve">
+    <value>Price without tax</value>
+  </data>
+  <data name="label_text_quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="label_text_search_existing_product" xml:space="preserve">
+    <value>Search existing product</value>
+  </data>
+  <data name="label_text_tax_rate" xml:space="preserve">
+    <value>Tax rate</value>
+  </data>
+  <data name="status_accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
+  <data name="status_in_progress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="status_rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="label_text_summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="alert_message_delete_quote_confirm" xml:space="preserve">
+    <value>Are you sure to delele this Quote?</value>
+  </data>
+  <data name="alert_title_quote" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="page_title_edit_quote" xml:space="preserve">
+    <value>Edit Quote</value>
+  </data>
+  <data name="alert_message_intervention_undone" xml:space="preserve">
+    <value>Are you sure to undone this intervention?</value>
+  </data>
+  <data name="DESCRIPTION_MOBILE_ACTIVITY_TYPE" xml:space="preserve">
+    <value>Always show custom actions and fields that are not associated with an activity type when an activity type is selected</value>
+  </data>
+  <data name="MOBILE_ACTIVITY_TYPE" xml:space="preserve">
+    <value>Choosing a type of activity, displays the actions and custom fields without type</value>
+  </data>
+  <data name="page_title_quote_detail" xml:space="preserve">
+    <value>Quote Detail</value>
+  </data>
+  <data name="label_text_discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="label_text_discount_percent" xml:space="preserve">
+    <value>Discount percent</value>
+  </data>
+  <data name="label_text_speakers" xml:space="preserve">
+    <value>Speakers</value>
+  </data>
+  <data name="label_text_add_speaker" xml:space="preserve">
+    <value>Add speaker</value>
+  </data>
+  <data name="label_text_add_date_2" xml:space="preserve">
+    <value>Add date:</value>
+  </data>
+  <data name="label_text_delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="label_text_edit_date_2" xml:space="preserve">
+    <value>Edit date:</value>
+  </data>
+  <data name="label_text_file_name_2" xml:space="preserve">
+    <value>File name:</value>
+  </data>
+  <data name="label_text_file_size_2" xml:space="preserve">
+    <value>File size:</value>
+  </data>
+  <data name="label_text_image_height_2" xml:space="preserve">
+    <value>Image height:</value>
+  </data>
+  <data name="label_text_image_width_2" xml:space="preserve">
+    <value>Image width:</value>
+  </data>
+  <data name="label_text_legend_2" xml:space="preserve">
+    <value>Legend:</value>
+  </data>
+  <data name="label_text_save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="label_text_share" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="alert_message_delete_media_confirm" xml:space="preserve">
+    <value>Are you sure to delete this media?</value>
+  </data>
+  <data name="alert_title_media" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="button_text_add_an_invoice" xml:space="preserve">
+    <value>Add a invoice</value>
+  </data>
+  <data name="alert_message_user_already_exist" xml:space="preserve">
+    <value>This speaker is already existed</value>
+  </data>
+  <data name="alert_message_logging" xml:space="preserve">
+    <value>Logging...</value>
+  </data>
+  <data name="alert_no_internt_message" xml:space="preserve">
+    <value>You are not connected to the internet</value>
+  </data>
+  <data name="APP_PURGE_DATA_1MONTH" xml:space="preserve">
+    <value>+1 Months</value>
+  </data>
+  <data name="APP_PURGE_DATA_1YEAR" xml:space="preserve">
+    <value>+1 Year</value>
+  </data>
+  <data name="APP_PURGE_DATA_3MONTHS" xml:space="preserve">
+    <value>+3 Months</value>
+  </data>
+  <data name="APP_PURGE_DATA_6MONTHS" xml:space="preserve">
+    <value>+6 Months</value>
+  </data>
+  <data name="APP_PURGE_DATA_7DAYS" xml:space="preserve">
+    <value>+7 Days</value>
+  </data>
+  <data name="APP_PURGE_DATA_ANY" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="Saving" xml:space="preserve">
+    <value>Saving...</value>
+  </data>
+  <data name="all" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="notification_new_intervention" xml:space="preserve">
+    <value>New intervention received</value>
+  </data>
+  <data name="notification_new_interventions" xml:space="preserve">
+    <value>New interventions received</value>
+  </data>
+  <data name="notification_title" xml:space="preserve">
+    <value>Notification LogWork</value>
+  </data>
+  <data name="label_text_or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="label_text_product_name" xml:space="preserve">
+    <value>Product name</value>
+  </data>
+  <data name="label_text_total_ht" xml:space="preserve">
+    <value>Total HT</value>
+  </data>
+  <data name="label_text_total_ttc" xml:space="preserve">
+    <value>Total TTC</value>
+  </data>
+  <data name="label_text_tva" xml:space="preserve">
+    <value>TVA</value>
+  </data>
+  <data name="message_loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="notification_new_messages" xml:space="preserve">
+    <value>New messages received</value>
+  </data>
+  <data name="label_text_expiration_date" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
+  <data name="label_text_quote_date" xml:space="preserve">
+    <value>Quote date</value>
+  </data>
+  <data name="planning" xml:space="preserve">
+    <value>Planning</value>
+  </data>
+</root>

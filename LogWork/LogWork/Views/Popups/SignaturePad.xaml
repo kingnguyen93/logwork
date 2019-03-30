@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Popups.SignaturePad"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:signaturePad="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms"
+    Title="{ex:Translate Key=page_title_signature}">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="WhiteSmoke"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <signaturePad:SignaturePadView
+                x:Name="signatureView"
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                StrokeColor="Black"
+                StrokeWidth="2"
+                VerticalOptions="FillAndExpand" />
+            <StackLayout
+                Padding="10"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <Button
+                    Clicked="SaveButton_Clicked"
+                    FontAttributes="None"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_save}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+                <Button
+                    Clicked="CancelButton_Clicked"
+                    FontAttributes="None"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_cancel}"
+                    TextColor="Black"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

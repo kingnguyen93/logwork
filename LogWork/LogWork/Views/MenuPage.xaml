@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="Menu"
+    
+    >
+    <StackLayout VerticalOptions="FillAndExpand">
+        <ListView
+            x:Name="ListViewMenu"
+            HasUnevenRows="True"
+            SelectionMode="None"
+            SeparatorVisibility="None">
+            <ListView.Header>
+                <AbsoluteLayout HeightRequest="100" HorizontalOptions="FillAndExpand">
+                    <Image
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Aspect="Fill"
+                        Source="{ex:ImageResource Key=bg_header.jpg}" />
+                    <StackLayout AbsoluteLayout.LayoutBounds=".5,.5,AutoSize,AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional">
+                        <Label
+                            x:Name="lblUserAccount"
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="White" />
+                        <Label
+                            x:Name="lblUserName"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            TextColor="White" />
+                    </StackLayout>
+                </AbsoluteLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HeightRequest="25"
+                                HorizontalOptions="Center"
+                                Source="{Binding Icon}"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="14"
+                                Text="{Binding Title}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                Padding="0"
+                                BackgroundColor="Red"
+                                BorderColor="Red"
+                                CornerRadius="17.5"
+                                HasShadow="False"
+                                HeightRequest="35"
+                                HorizontalOptions="Center"
+                                IsVisible="{Binding Badge, Converter={StaticResource HasDataConverter}}"
+                                VerticalOptions="Center"
+                                WidthRequest="35">
+                                <Label
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Badge}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

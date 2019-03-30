@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Shared.ClientLookUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.Behaviors"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_search_client}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CancelSearchCommand}" Text="{ex:Translate Key=label_text_cancel}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="White">
+                <controls:ExtendedSearchBar
+                    Margin="0,-10,0,0"
+                    BackgroundColor="White"
+                    BarTintColor="{StaticResource NavigationPrimary}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="{ex:Translate Key=entry_hint_search}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding SearchKey}"
+                    VerticalOptions="Start">
+                    <SearchBar.Effects>
+                        <effects:RoundedEffect />
+                    </SearchBar.Effects>
+                </controls:ExtendedSearchBar>
+                <ListView
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="True"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding ListClient}"
+                    SelectionMode="None"
+                    SeparatorColor="Gray"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label
+                                    Margin="8"
+                                    FontSize="12"
+                                    TextColor="Black">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Code, StringFormat='{}#{0}'}" />
+                                            <Span Text="{Binding Title, StringFormat='{} {0}'}" />
+                                            <Span Text="{Binding AddressesCount, StringFormat='{} ({0} addresses)'}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior
+                            Command="{Binding ClientSelectedCommand}"
+                            EventArgsConverter="{StaticResource ItemTappedConverter}"
+                            EventName="ItemTapped" />
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
+            <Frame
+                Margin="16"
+                Padding="0"
+                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="DeepSkyBlue"
+                BorderColor="Transparent"
+                CornerRadius="27.5"
+                HasShadow="False"
+                HeightRequest="55"
+                WidthRequest="55">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddClientCommand}" />
+                </Frame.GestureRecognizers>
+                <Image
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Source="ic_add_white" />
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Messages.MessagesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_messages}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetSyncCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <controls:ExtendedListView
+                    HasUnevenRows="True"
+                    HorizontalOptions="FillAndExpand"
+                    ItemTappedCommand="{Binding ViewMessageCommand}"
+                    ItemsSource="{Binding ListMessageByUser}"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+                    <controls:ExtendedListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10,5,10,5" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="80" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        Text="{Binding Title}"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Text="{Binding LastMessage.AddDate, StringFormat='{}{0:yyyy-MM-dd}'}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        FontSize="12"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding LastMessage.Content}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:ExtendedListView.ItemTemplate>
+                </controls:ExtendedListView>
+            </StackLayout>
+            <Frame
+                Margin="16"
+                Padding="0"
+                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="DeepSkyBlue"
+                BorderColor="Transparent"
+                CornerRadius="27.5"
+                HasShadow="False"
+                HeightRequest="55"
+                WidthRequest="55">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CreateNewMessageCommand}" />
+                </Frame.GestureRecognizers>
+                <Image
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Source="ic_create_white" />
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

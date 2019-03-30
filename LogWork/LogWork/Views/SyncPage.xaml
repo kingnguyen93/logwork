@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.SyncPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:popups="clr-namespace:LogWork.Views.Popups">
+    <ContentPage.Content>
+        <StackLayout>
+            <popups:LoadingScreen1
+                HorizontalOptions="FillAndExpand"
+                IsVisible="True"
+                Message="{ex:Translate Key=content_message_synchronizing}"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

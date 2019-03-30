@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Invoices.InvoicesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_invoices}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetSyncCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="White"
+                Spacing="0">
+                <controls:ExtendedSearchBar
+                    Margin="0,-10,0,0"
+                    BackgroundColor="White"
+                    BarTintColor="{StaticResource NavigationPrimary}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="{ex:Translate Key=search_hint_search}"
+                    PlaceholderColor="LightGray"
+                    TextChangedCommand="{Binding SearchInvoiceCommand}"
+                    VerticalOptions="Start">
+                    <controls:ExtendedSearchBar.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedSearchBar.Effects>
+                </controls:ExtendedSearchBar>
+                <controls:ExtendedListView
+                    CanLoadMore="True"
+                    HasUnevenRows="True"
+                    HorizontalOptions="FillAndExpand"
+                    ItemTappedCommand="{Binding ViewInvoiceCommand}"
+                    ItemsSource="{Binding ListInvoice}"
+                    LoadMoreCommand="{Binding LoadMoreInvoiceCommand}"
+                    LoadPositionOffset="8"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+                    <controls:ExtendedListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    Padding="10,5,10,5"
+                                    HorizontalOptions="FillAndExpand"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="75" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontSize="12"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    Text="{Binding InvoiceNumber}"
+                                                    TextColor="Black" />
+                                                <Span Text="{Binding IDate, StringFormat='{} {0:dd/MM/yyyy}'}" TextColor="DimGray" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontSize="12"
+                                        Text="{Binding Client.Title}"
+                                        TextColor="DimGray"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontSize="12"
+                                        Text="{Binding Address.FullAddress}"
+                                        TextColor="DimGray"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding Status}"
+                                        TextColor="{Binding StatusNumber, Converter={StaticResource StatusToColor}}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding CachePtHt, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                        TextColor="DimGray"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        HorizontalOptions="End"
+                                        Text="{Binding CachePtTtcToPay, StringFormat='{}{0:###,###,###,##0.##}€'}"
+                                        TextColor="DimGray"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:ExtendedListView.ItemTemplate>
+                </controls:ExtendedListView>
+                <Button
+                    BackgroundColor="#47cec0"
+                    BorderColor="#47cec0"
+                    Command="{Binding AddInvoiceCommand}"
+                    CornerRadius="0"
+                    FontSize="16"
+                    HeightRequest="45"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_add_an_invoice}"
+                    TextColor="White"
+                    VerticalOptions="End" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

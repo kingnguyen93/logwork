@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Customers.CustomerDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout
+                Padding="10,0,10,0"
+                Spacing="0"
+                VerticalOptions="Start">
+                <Label
+                    Margin="0,10,0,0"
+                    FontSize="13"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontAttributes="Bold" Text="{ex:Translate Key=label_text_title}" />
+                            <Span FontAttributes="Bold" Text=":" />
+                            <Span Text="{Binding Client.Title, StringFormat='{} {0}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    FontSize="13"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontAttributes="Bold" Text="{ex:Translate Key=label_text_societe}" />
+                            <Span FontAttributes="Bold" Text=":" />
+                            <Span Text="{Binding Client.Societe, StringFormat='{} {0}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="13" VerticalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                Text="{ex:Translate Key=label_text_email}"
+                                TextColor="Black" />
+                            <Span
+                                FontAttributes="Bold"
+                                Text=":"
+                                TextColor="Black" />
+                            <Span
+                                Text="{Binding Client.Email, StringFormat='{} {0}'}"
+                                TextColor="DeepSkyBlue"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SendMailCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <controls:Separator
+                    Margin="0,10,0,0"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <Button
+                    Margin="20,10,20,0"
+                    Padding="0"
+                    BackgroundColor="#47cec0"
+                    Command="{Binding AddInterventionCommand}"
+                    CornerRadius="0"
+                    FontAttributes="None"
+                    FontSize="12"
+                    HeightRequest="30"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_add_an_intervention}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+                <controls:Separator
+                    Margin="0,10,0,0"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="0,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    Text="{ex:Translate Key=label_text_addresses}"
+                    TextColor="Black"
+                    VerticalOptions="Start" />
+                <Frame
+                    Padding="1"
+                    BorderColor="Black"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <StackLayout Spacing="0">
+                        <Grid
+                            BackgroundColor="#2196F3"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_street}"
+                                TextColor="White" />
+                            <controls:Separator
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="Black"
+                                Orientation="Vertical" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_postal_code}"
+                                TextColor="White" />
+                            <controls:Separator
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                BackgroundColor="Black"
+                                Orientation="Vertical" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_city}"
+                                TextColor="White" />
+                        </Grid>
+                        <controls:Separator
+                            BackgroundColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start" />
+                        <controls:RepeaterView
+                            HorizontalOptions="FillAndExpand"
+                            ItemTappedCommand="{Binding ViewAddressCommand}"
+                            ItemsSource="{Binding Client.Addresses}"
+                            VerticalOptions="Start">
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="0">
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="80" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="12"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Adresse}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                            <controls:Separator
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                BackgroundColor="Black"
+                                                Orientation="Vertical" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                FontSize="12"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding CodePostal}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                            <controls:Separator
+                                                Grid.Row="0"
+                                                Grid.Column="3"
+                                                BackgroundColor="Black"
+                                                Orientation="Vertical" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="4"
+                                                FontSize="12"
+                                                Text="{Binding Ville}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                        <controls:Separator
+                                            BackgroundColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+                    </StackLayout>
+                </Frame>
+                <controls:Separator
+                    Margin="0,10,0,0"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="0,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="{ex:Translate Key=label_text_interventions}"
+                    TextColor="Black"
+                    VerticalOptions="Start" />
+                <Frame
+                    Margin="0,5,0,10"
+                    Padding="1"
+                    BorderColor="Black"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <StackLayout Spacing="0">
+                        <Grid
+                            BackgroundColor="#2196F3"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_infomations}"
+                                TextColor="White" />
+                            <controls:Separator
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="Black"
+                                Orientation="Vertical" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_done}"
+                                TextColor="White" />
+                        </Grid>
+                        <controls:Separator
+                            BackgroundColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start" />
+                        <controls:RepeaterView
+                            HorizontalOptions="FillAndExpand"
+                            ItemTappedCommand="{Binding ViewInterventionCommand}"
+                            ItemsSource="{Binding ListIntervention}"
+                            VerticalOptions="Start">
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="0">
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="80" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Spacing="0">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label
+                                                        FontSize="12"
+                                                        IsVisible="{Binding Code, Converter={StaticResource HasDataConverter}}"
+                                                        Text="{Binding Code, StringFormat='{}#{0}'}"
+                                                        TextColor="#0d0d0d" />
+                                                    <Label
+                                                        FontSize="12"
+                                                        IsVisible="{Binding Nom, Converter={StaticResource HasDataConverter}}"
+                                                        Text="{Binding Nom}"
+                                                        TextColor="#0d0d0d" />
+                                                </StackLayout>
+                                                <Label
+                                                    FontSize="12"
+                                                    IsVisible="{Binding Address, Converter={StaticResource HasDataConverter}}"
+                                                    Text="{Binding Address.FullAddress}"
+                                                    TextColor="#0d0d0d" />
+                                            </StackLayout>
+                                            <controls:Separator
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                BackgroundColor="Black"
+                                                Orientation="Vertical" />
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                Spacing="0">
+                                                <Label
+                                                    FontSize="12"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding IsDoneText}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    FontSize="12"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding DoneDateEnd, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                                    TextColor="Black"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                        </Grid>
+                                        <controls:Separator
+                                            BackgroundColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Tracking.TrackingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_tracking}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetSyncCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <controls:ExtendedListView
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                ItemTappedCommand="{Binding TrackingSelectedCommand}"
+                ItemsSource="{Binding ListTracking}"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Padding="10,5,10,5"
+                                HorizontalOptions="FillAndExpand"
+                                RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="12"
+                                    Text="{Binding Nonce}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    Text="{Binding Date, StringFormat='{}{0:dd/MM/yyyy HH:mm:ss}'}"
+                                    TextColor="Black" />
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding IsToSync, Converter={StaticResource ReverseBoolConverter}}"
+                                    Source="ic_done_green_300"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:ExtendedListView>
+            <controls:Separator
+                BackgroundColor="LightGray"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="End" />
+            <StackLayout
+                Padding="5"
+                BackgroundColor="WhiteSmoke"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0"
+                VerticalOptions="End">
+                <ImageButton
+                    Padding="2"
+                    BackgroundColor="{StaticResource BlueGreen}"
+                    Command="{Binding ScanTrackingCommand}"
+                    CornerRadius="5"
+                    HeightRequest="30"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="ic_scan_barcode"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+                <ImageButton
+                    Padding="5"
+                    BackgroundColor="{StaticResource BlueGreen}"
+                    Command="{Binding ManualTrackingCommand}"
+                    CornerRadius="5"
+                    HeightRequest="30"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="ic_touch_app_white"
+                    VerticalOptions="Center"
+                    WidthRequest="80" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

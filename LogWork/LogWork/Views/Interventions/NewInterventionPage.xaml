@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Interventions.NewInterventionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.Behaviors"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:interventions="clr-namespace:LogWork.Views.Interventions"
+    xmlns:local="clr-namespace:LogWork"
+    x:Name="this"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    InputTransparent="{Binding CanEditClientAddress, Converter={StaticResource ReverseBoolConverter}}"
+                    Spacing="10"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry
+                        CanFocus="False"
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        OnFocusedCommand="{Binding OnClientFocusedCommand}"
+                        Placeholder="{ex:Translate Key=entry_hint_client}"
+                        PlaceholderColor="LightGray"
+                        Text="{Binding Intervention.Client.Title}"
+                        TextColor="Black"
+                        VerticalOptions="Start">
+                        <controls:ExtendedEntry.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedEntry.Effects>
+                    </controls:ExtendedEntry>
+                    <controls:ExtendedEntry
+                        CanFocus="False"
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding Intervention.Client, Converter={StaticResource HasDataConverter}}"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        OnFocusedCommand="{Binding OnAddresseFocusedCommand}"
+                        Placeholder="{ex:Translate Key=entry_hint_adresse}"
+                        PlaceholderColor="LightGray"
+                        Text="{Binding Intervention.Address.FullAddress}"
+                        TextColor="Black"
+                        VerticalOptions="Start">
+                        <controls:ExtendedEntry.Effects>
+                            <effects:RoundedEffect />
+                        </controls:ExtendedEntry.Effects>
+                    </controls:ExtendedEntry>
+                </StackLayout>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileDisplayTitle}}">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_title}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Entry
+                    Margin="16,10,16,0"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileDisplayTitle}}"
+                    Placeholder="{ex:Translate Key=entry_hint_title}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Intervention.Nom}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Entry.Effects>
+                        <effects:RoundedEffect />
+                    </Entry.Effects>
+                </Entry>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditUsers}}">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_speakers}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditUsers}}"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Frame
+                        Padding="5"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="LightGray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label
+                                FontSize="14"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding Intervention.User.FullName}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <ContentView
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                        </StackLayout>
+                    </Frame>
+                    <controls:ExtendedStackLayout
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding Intervention.ChildInterventions}"
+                        Spacing="0"
+                        VerticalOptions="Start">
+                        <controls:ExtendedStackLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,5,0,0"
+                                    Padding="5"
+                                    BackgroundColor="WhiteSmoke"
+                                    BorderColor="LightGray"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsActif, Converter={StaticResource IntToBoolConverter}}">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            TextColor="Black"
+                                            VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding User.FullName}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Image
+                                            HeightRequest="25"
+                                            HorizontalOptions="End"
+                                            Source="ic_close_black"
+                                            VerticalOptions="Center"
+                                            WidthRequest="25">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.DeleteSpeakerCommand, Source={Reference this}}" CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </controls:ExtendedStackLayout.ItemTemplate>
+                    </controls:ExtendedStackLayout>
+                    <Frame
+                        Margin="0,5,0,0"
+                        Padding="10"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddSpeakerCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{ex:Translate Key=label_text_add_speaker}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditDates}}">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_dates}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditDates}}"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_begin}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                        <controls:ExtendedDatePicker
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            BackgroundColor="WhiteSmoke"
+                            Date="{Binding DateStart}"
+                            FontSize="14"
+                            Format="dd/MM/yyyy"
+                            TextColor="Black"
+                            UnFocusedCommand="{Binding DateStartUnFocusedCommand}">
+                            <controls:ExtendedDatePicker.Effects>
+                                <effects:RoundedEffect />
+                            </controls:ExtendedDatePicker.Effects>
+                        </controls:ExtendedDatePicker>
+                        <controls:ExtendedEntry
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            CanFocus="False"
+                            FontSize="14"
+                            InputTransparent="True"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Text="{Binding Intervention.DoneDateStart, StringFormat='{}{0:dd/MM/yyyy}'}"
+                            TextColor="Black">
+                            <controls:ExtendedEntry.Effects>
+                                <effects:RoundedEffect />
+                            </controls:ExtendedEntry.Effects>
+                        </controls:ExtendedEntry>
+                    </AbsoluteLayout>
+                    <ContentView
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                </StackLayout>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditDates}}"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_end}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                        <controls:ExtendedDatePicker
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            BackgroundColor="WhiteSmoke"
+                            Date="{Binding DateEnd}"
+                            FontSize="14"
+                            Format="dd/MM/yyyy"
+                            TextColor="Black"
+                            UnFocusedCommand="{Binding DateEndUnFocusedCommand}">
+                            <controls:ExtendedDatePicker.Effects>
+                                <effects:RoundedEffect />
+                            </controls:ExtendedDatePicker.Effects>
+                        </controls:ExtendedDatePicker>
+                        <controls:ExtendedEntry
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            CanFocus="False"
+                            FontSize="14"
+                            InputTransparent="True"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Text="{Binding Intervention.DoneDateEnd, StringFormat='{}{0:dd/MM/yyyy}'}"
+                            TextColor="Black">
+                            <controls:ExtendedEntry.Effects>
+                                <effects:RoundedEffect />
+                            </controls:ExtendedEntry.Effects>
+                        </controls:ExtendedEntry>
+                    </AbsoluteLayout>
+                    <ContentView
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                </StackLayout>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditHours}}">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_hours}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <controls:ToggleBox
+                        CheckedImage="ic_checked_box_black"
+                        HeightRequest="25"
+                        HorizontalOptions="Start"
+                        IsToggled="{Binding Intervention.IsDone, Converter={StaticResource IntToBoolConverter}}"
+                        UnCheckedImage="ic_unchecked_box_black"
+                        VerticalOptions="Center"
+                        WidthRequest="25" />
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_completed}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditHours}}"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_begin}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <TimePicker
+                        BackgroundColor="WhiteSmoke"
+                        FontSize="14"
+                        Format="HH:mm"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="Black"
+                        Time="{Binding HourStart}"
+                        VerticalOptions="Center">
+                        <TimePicker.Effects>
+                            <effects:RoundedEffect />
+                        </TimePicker.Effects>
+                    </TimePicker>
+                    <ContentView
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                </StackLayout>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanEditHours}}"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_end}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <TimePicker
+                        BackgroundColor="WhiteSmoke"
+                        FontSize="14"
+                        Format="HH:mm"
+                        HorizontalOptions="FillAndExpand"
+                        TextColor="Black"
+                        Time="{Binding HourEnd}"
+                        VerticalOptions="Center">
+                        <TimePicker.Effects>
+                            <effects:RoundedEffect />
+                        </TimePicker.Effects>
+                    </TimePicker>
+                    <ContentView
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                </StackLayout>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        FontSize="14"
+                        HorizontalOptions="Start"
+                        Text="{ex:Translate Key=label_text_working_time}"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        WidthRequest="100" />
+                    <Entry
+                        BackgroundColor="WhiteSmoke"
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Numeric"
+                        Text="{Binding WorkingHours, StringFormat='{}{0:###,###,###,#00.##}'}"
+                        TextColor="Black"
+                        VerticalOptions="Center">
+                        <Entry.Effects>
+                            <effects:RoundedEffect />
+                        </Entry.Effects>
+                        <Entry.Behaviors>
+                            <behaviors:NumericValidatorBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text=":"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Entry
+                        BackgroundColor="WhiteSmoke"
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Numeric"
+                        Text="{Binding WorkingMins, StringFormat='{}{0:###,###,###,#00.##}'}"
+                        TextColor="Black"
+                        VerticalOptions="Center">
+                        <Entry.Effects>
+                            <effects:RoundedEffect />
+                        </Entry.Effects>
+                        <Entry.Behaviors>
+                            <behaviors:NumericValidatorBehavior />
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Image
+                        HeightRequest="30"
+                        HorizontalOptions="End"
+                        Source="ic_sync_black"
+                        VerticalOptions="Center"
+                        WidthRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ReCalculateWorkingTimeCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_contract}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <controls:ExtendedEntry
+                    Margin="16,10,16,0"
+                    CanFocus="False"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    OnFocusedCommand="{Binding OnContractFocusedCommand}"
+                    Placeholder="{ex:Translate Key=entry_hint_contract}"
+                    PlaceholderColor="LightGray"
+                    Text="{Binding Intervention.Contract.Title}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedEntry.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedEntry.Effects>
+                </controls:ExtendedEntry>
+                <!--<controls:ExtendedPicker
+                    Title="{ex:Translate Key=picker_title_select}"
+                    Margin="16,10,16,0"
+                    Command="{Binding FilialeSelectedCommand}"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    ItemDisplayBinding="{Binding Nom}"
+                    ItemsSource="{Binding ListFiliale}"
+                    SelectedIndex="{Binding SelectedFiliale}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedPicker.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedPicker.Effects>
+                </controls:ExtendedPicker>-->
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_filiale}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <controls:ExtendedPicker
+                    Title="{ex:Translate Key=picker_title_select}"
+                    Margin="16,10,16,0"
+                    Command="{Binding FilialeSelectedCommand}"
+                    FontSize="14"
+                    HorizontalOptions="FillAndExpand"
+                    ItemDisplayBinding="{Binding Nom}"
+                    ItemsSource="{Binding ListFiliale}"
+                    SelectedIndex="{Binding SelectedFiliale}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <controls:ExtendedPicker.Effects>
+                        <effects:RoundedEffect />
+                    </controls:ExtendedPicker.Effects>
+                </controls:ExtendedPicker>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_further_infomations}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <controls:RepeaterView
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding ListUnite}"
+                    Spacing="8"
+                    VerticalOptions="Start"
+                    VerticalScrollBarVisibility="Never">
+                    <controls:RepeaterView.ItemTemplate>
+                        <DataTemplate>
+                            <interventions:UniteRenderer IsVisible="{Binding IsVisible}" Unite="{Binding .}" />
+                        </DataTemplate>
+                    </controls:RepeaterView.ItemTemplate>
+                </controls:RepeaterView>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_action}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <controls:RepeaterView
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding ListTask}"
+                    Spacing="8"
+                    VerticalOptions="Start"
+                    VerticalScrollBarVisibility="Never">
+                    <controls:RepeaterView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <controls:ToggleBox
+                                    CheckedImage="ic_checked_box_black"
+                                    Command="{Binding BindingContext.SelectTaskCommand, Source={Reference this}}"
+                                    CommandParameter="{Binding .}"
+                                    HeightRequest="25"
+                                    HorizontalOptions="Start"
+                                    IsToggled="{Binding Selected}"
+                                    UnCheckedImage="ic_unchecked_box_black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontSize="14"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding Nom}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <TimePicker
+                                    BackgroundColor="WhiteSmoke"
+                                    FontSize="12"
+                                    Format="HH:mm"
+                                    HorizontalOptions="End"
+                                    TextColor="Black"
+                                    Time="{Binding Minute, Converter={StaticResource MinutesToTimeSpanConverter}}"
+                                    VerticalOptions="Center">
+                                    <TimePicker.Effects>
+                                        <effects:RoundedEffect />
+                                    </TimePicker.Effects>
+                                </TimePicker>
+                            </StackLayout>
+                        </DataTemplate>
+                    </controls:RepeaterView.ItemTemplate>
+                </controls:RepeaterView>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,10,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanSearchProduct}}">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{ex:Translate Key=label_text_products}"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="End"
+                            Source="ic_add_circle_outline_black"
+                            VerticalOptions="Center"
+                            WidthRequest="20">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddProductCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+                <StackLayout
+                    Margin="16,10,16,0"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding Source={Static local:AppSettings.MobileCanSearchProduct}}"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <controls:ExtendedStackLayout
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding Intervention.LinkInterventionProducts}"
+                        Spacing="0">
+                        <controls:ExtendedStackLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,5,0,0"
+                                    Padding="5"
+                                    BackgroundColor="WhiteSmoke"
+                                    BorderColor="LightGray"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsActif, Converter={StaticResource IntToBoolConverter}}">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            TextColor="Black"
+                                            VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding ProductName}" />
+                                                    <Span Text="{Binding Quantity, StringFormat='{} ({0})'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Image
+                                            HeightRequest="25"
+                                            HorizontalOptions="End"
+                                            Source="ic_close_black"
+                                            VerticalOptions="Center"
+                                            WidthRequest="25">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.DeleteProductCommand, Source={Reference this}}" CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </controls:ExtendedStackLayout.ItemTemplate>
+                    </controls:ExtendedStackLayout>
+                    <Frame
+                        Margin="0,5,0,0"
+                        Padding="10"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddProductCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{ex:Translate Key=label_text_add_product}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_media}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <StackLayout
+                    Margin="5,10,5,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="2"
+                    VerticalOptions="Start">
+                    <Frame
+                        Padding="2,4,2,4"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Source={Static local:AppSettings.MobileActiveTakePhoto}}"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                Source="ic_camera_black"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="TailTruncation"
+                                Text="{ex:Translate Key=label_text_camera}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="2,4,2,4"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Source={Static local:AppSettings.MobileActivePickPhoto}}"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PickPhotoCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                Source="ic_folder_black"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="TailTruncation"
+                                Text="{ex:Translate Key=label_text_library}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Padding="2,4,2,4"
+                        BackgroundColor="WhiteSmoke"
+                        BorderColor="Gray"
+                        CornerRadius="5"
+                        HasShadow="False"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding Source={Static local:AppSettings.MobileActiveSignature}}"
+                        VerticalOptions="Center">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignatureCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="Start"
+                                Source="ic_create_black"
+                                VerticalOptions="Center"
+                                WidthRequest="25" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="12"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="TailTruncation"
+                                Text="{ex:Translate Key=label_text_signature}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <controls:RepeaterView
+                    Margin="10,10,10,0"
+                    HorizontalOptions="Center"
+                    HorizontalScrollBarVisibility="Never"
+                    IsVisible="{Binding Intervention.MediaLinks, Converter={StaticResource HasDataConverter}}"
+                    ItemsSource="{Binding Intervention.MediaLinks}"
+                    Orientation="Horizontal"
+                    Spacing="5"
+                    VerticalOptions="Start">
+                    <controls:RepeaterView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="2"
+                                BorderColor="Gray"
+                                CornerRadius="3"
+                                HasShadow="False"
+                                HeightRequest="130"
+                                HorizontalOptions="Center"
+                                IsVisible="{Binding IsActif, Converter={StaticResource IntToBoolConverter}}"
+                                WidthRequest="100">
+                                <StackLayout Spacing="0">
+                                    <ffimageloading:CachedImage
+                                        Aspect="AspectFit"
+                                        HeightRequest="100"
+                                        Source="{Binding Media.ImageDisplay}"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="100">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.ViewMediaCommand, Source={Reference this}}" CommandParameter="{Binding .}" />
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+                                    <Button
+                                        Padding="0"
+                                        BackgroundColor="Red"
+                                        Command="{Binding BindingContext.DeleteMediaCommand, Source={Reference this}}"
+                                        CommandParameter="{Binding .}"
+                                        FontAttributes="None"
+                                        FontSize="10"
+                                        HeightRequest="30"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{ex:Translate Key=button_text_delete}"
+                                        TextColor="White"
+                                        VerticalOptions="End" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:RepeaterView.ItemTemplate>
+                </controls:RepeaterView>
+                <Frame
+                    Margin="-1,10,-1,0"
+                    Padding="16,5,0,5"
+                    BackgroundColor="WhiteSmoke"
+                    BorderColor="Gray"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="{ex:Translate Key=label_text_comment}"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Frame
+                    Margin="16,10,16,0"
+                    Padding="2"
+                    BorderColor="LightGray"
+                    CornerRadius="5"
+                    HasShadow="False"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <Editor
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Intervention.DoneComment}"
+                        TextColor="Black"
+                        VerticalOptions="FillAndExpand">
+                        <Editor.Effects>
+                            <effects:BorderlessEffect />
+                        </Editor.Effects>
+                    </Editor>
+                </Frame>
+                <Button
+                    Margin="16,10,16,10"
+                    BackgroundColor="#47cec0"
+                    BorderColor="#47cec0"
+                    Command="{Binding SaveInterventionCommand}"
+                    CornerRadius="0"
+                    FontSize="14"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{ex:Translate Key=button_text_save}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

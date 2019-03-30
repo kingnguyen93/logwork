@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Interventions.InterventionHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    Title="{ex:Translate Key=page_title_histoty}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetHistoryCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                BackgroundColor="DeepSkyBlue"
+                FontAttributes="Bold"
+                FontSize="13"
+                HeightRequest="30"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Intervention.Nom}"
+                TextColor="White"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center" />
+            <ScrollView
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <Frame
+                    Margin="5"
+                    Padding="1"
+                    BorderColor="Black"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start">
+                    <StackLayout Spacing="0">
+                        <Grid
+                            BackgroundColor="#2196F3"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_done}"
+                                TextColor="White" />
+                            <controls:Separator
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                BackgroundColor="Black"
+                                Orientation="Vertical" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_date}"
+                                TextColor="White" />
+                            <controls:Separator
+                                Grid.Row="0"
+                                Grid.Column="3"
+                                BackgroundColor="Black"
+                                Orientation="Vertical" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                FontSize="14"
+                                HorizontalOptions="Center"
+                                Text="{ex:Translate Key=label_text_comment}"
+                                TextColor="White" />
+                        </Grid>
+                        <controls:Separator
+                            BackgroundColor="Black"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Start" />
+                        <controls:RepeaterView
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding InterventionHistory}"
+                            VerticalOptions="Start">
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="0">
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="60" />
+                                                <ColumnDefinition Width="1" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontSize="12"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding IsDone}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                            <controls:Separator
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                BackgroundColor="Black"
+                                                Orientation="Vertical" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                FontSize="12"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Date}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                            <controls:Separator
+                                                Grid.Row="0"
+                                                Grid.Column="3"
+                                                BackgroundColor="Black"
+                                                Orientation="Vertical" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="4"
+                                                FontSize="12"
+                                                Text="{Binding Comment}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+                                        <controls:Separator
+                                            BackgroundColor="Black"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

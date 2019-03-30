@@ -1,0 +1,304 @@
+[
+  //{
+  //  "name": "CATEGORY_VISUAL",
+  //  "items": {
+  //    "APP_FONT_SIZE": {
+  //      "category": "CATEGORY_VISUAL",
+  //      "name": "APP_FONT_SIZE",
+  //      "defaultValue": "12",
+  //      "type": "List",
+  //      "arrange": [ "10", "12", "14", "16", "18", "20", "22", "24" ],
+  //      "description": "",
+  //      "order": "1"
+  //    }
+  //  }
+  //},
+  {
+    "name": "CATEGORY_SYNCHRONIZATION",
+    "items": {
+      "APP_MEDIA_SIZE_MAX": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_MEDIA_SIZE_MAX",
+        "defaultValue": "Original",
+        "type": "List",
+        "arrange": [ "100px", "400px", "800px", "1000px", "1400px", "1800px", "2000px", "2400px", "Original" ],
+        "order": "1"
+      },
+      "APP_PURGE_DATA": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_PURGE_DATA",
+        "defaultValue": "APP_PURGE_DATA_3MONTHS",
+        "type": "List",
+        "arrange": [ "APP_PURGE_DATA_ANY", "APP_PURGE_DATA_7DAYS", "APP_PURGE_DATA_1MONTH", "APP_PURGE_DATA_3MONTHS", "APP_PURGE_DATA_6MONTHS", "APP_PURGE_DATA_1YEAR" ],
+        "order": "2"
+      },
+      "APP_LAST_SYNCHRO": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_LAST_SYNCHRO",
+        "defaultValue": "0",
+        "type": "Text",
+        "message": "MESSAGE_APP_LAST_SYNCHRO",
+        "description": "DESCRIPTION_APP_LAST_SYNCHRO",
+        "order": "3"
+      },
+      "APP_LAST_SYNCHRO_PRODUCT": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_LAST_SYNCHRO_PRODUCT",
+        "defaultValue": "0",
+        "type": "Text",
+        "message": "MESSAGE_APP_LAST_SYNCHRO_PRODUCT",
+        "description": "DESCRIPTION_APP_LAST_SYNCHRO_PRODUCT",
+        "order": "4"
+      },
+      "APP_LAST_SYNCHRO_INVOICE": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_LAST_SYNCHRO_INVOICE",
+        "defaultValue": "0",
+        "type": "Text",
+        "message": "MESSAGE_APP_LAST_SYNCHRO_INVOICE",
+        "description": "DESCRIPTION_APP_LAST_SYNCHRO_INVOICE",
+        "order": "5"
+      },
+      "APP_RESET_DATA": {
+        "category": "CATEGORY_SYNCHRONIZATION",
+        "name": "APP_RESET_DATA",
+        "defaultValue": "",
+        "type": "Alert",
+        "message": "MESSAGE_APP_RESET_DATA",
+        "description": "DESCRIPTION_APP_RESET_DATA",
+        "order": "6"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_LIST_OF_INTERVENTIONS",
+    "items": {
+      "MOBILE_REPORTER_INTERVENTIONS_DEFAULT": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_REPORTER_INTERVENTIONS_DEFAULT",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_REPORTER_INTERVENTIONS",
+        "order": "1"
+      },
+      "MOBILE_DISPLAY_HOME_INTERVENTION_TITLE": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_HOME_INTERVENTION_TITLE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_TITLE",
+        "order": "2"
+      },
+      "MOBILE_DISPLAY_HOME_INTERVENTION_PRIORITY": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_HOME_INTERVENTION_PRIORITY",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_PRIORITY",
+        "order": "3"
+      },
+      "MOBILE_DISPLAY_HOME_INTERVENTION_CLIENT": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_HOME_INTERVENTION_CLIENT",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_CLIENT",
+        "order": "4"
+      },
+      "MOBILE_DISPLAY_HOME_INTERVENTION_ADRESSE": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_HOME_INTERVENTION_ADRESSE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_ADDRESS",
+        "order": "5"
+      },
+      "MOBILE_DISPLAY_HOME_INTERVENTION_TOGGLE_PROGRESS": {
+        "category": "CATEGORY_LIST_OF_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_HOME_INTERVENTION_TOGGLE_PROGRESS",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_HOME_INTERVENTION_TOGGLE_PROGRESS",
+        "order": "6"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_VIEW_INTERVENTIONS",
+    "items": {
+      "MOBILE_DISPLAY_CHRONO": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_CHRONO",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_CHRONO",
+        "order": "1"
+      },
+      "MOBILE_ACTIVATE_TAKE_PHOTO": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_ACTIVATE_TAKE_PHOTO",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_ACTIVATE_TAKE_PHOTO",
+        "order": "2"
+      },
+      "MOBILE_ACTIVATE_SEARCH_PHOTO": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_ACTIVATE_SEARCH_PHOTO",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_ACTIVATE_SEARCH_PHOTO",
+        "order": "3"
+      },
+      "MOBILE_ACTIVATE_TAKE_SIGNATURE": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_ACTIVATE_TAKE_SIGNATURE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_ACTIVATE_TAKE_SIGNATURE",
+        "order": "4"
+      },
+      "MOBILE_DISPLAY_MAP": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_DISPLAY_MAP",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_MAP",
+        "order": "5"
+      },
+      "MOBILE_SEND_MAIL": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_SEND_MAIL",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_SEND_MAIL",
+        "order": "6"
+      },
+      "MOBILE_ENABLE_PRODUCT": {
+        "category": "CATEGORY_VIEW_INTERVENTIONS",
+        "name": "MOBILE_ENABLE_PRODUCT",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_ENABLE_PRODUCT",
+        "order": "7"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_MODIFY_AN_INTERVENTION",
+    "items": {
+      "MOBILE_CAN_EDIT_CLIENT_ADRESSE": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_CAN_EDIT_CLIENT_ADRESSE",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_CAN_EDIT_CLIENT_ADDRESS",
+        "order": "1"
+      },
+      "MOBILE_CAN_EDIT_USERS": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_CAN_EDIT_USERS",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_CAN_EDIT_USERS",
+        "order": "2"
+      },
+      "MOBILE_DISPLAY_FIELD_TITLE": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_DISPLAY_FIELD_TITLE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_DISPLAY_FIELD_TITLE",
+        "order": "3"
+      },
+      "MOBILE_CAN_EDIT_DATES": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_CAN_EDIT_DATES",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_CAN_EDIT_DATES",
+        "order": "4"
+      },
+      "MOBILE_CAN_EDIT_HOURS": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_CAN_EDIT_HOURS",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_CAN_EDIT_HOURS",
+        "order": "5"
+      },
+      "MOBILE_CAN_SEARCH_PRODUCT": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_CAN_SEARCH_PRODUCT",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_CAN_SEARCH_PRODUCT",
+        "order": "6"
+      },
+      "MOBILE_ACTIVITY_TYPE": {
+        "category": "CATEGORY_MODIFY_AN_INTERVENTION",
+        "name": "MOBILE_ACTIVITY_TYPE",
+        "defaultValue": "0",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_ACTIVITY_TYPE",
+        "order": "7"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_HOURS_WORKED",
+    "items": {
+      "MOBILE_HOUR_START_ENABLE": {
+        "category": "CATEGORY_HOURS_WORKED",
+        "name": "MOBILE_HOUR_START_ENABLE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_HOUR_START_ENABLE",
+        "order": "1"
+      },
+      "MOBILE_HOUR_START_DEFAULT": {
+        "category": "CATEGORY_HOURS_WORKED",
+        "name": "MOBILE_HOUR_START_DEFAULT",
+        "defaultValue": "09:00",
+        "type": "Time",
+        "description": "",
+        "order": "2"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_NOTIFICATIONS",
+    "items": {
+      "MOBILE_NOTIF_MESSAGE": {
+        "category": "CATEGORY_NOTIFICATIONS",
+        "name": "MOBILE_NOTIF_MESSAGE",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_NOTIF_MESSAGE",
+        "order": "1"
+      },
+      "MOBILE_NOTIF_INTERVENTION": {
+        "category": "CATEGORY_NOTIFICATIONS",
+        "name": "MOBILE_NOTIF_INTERVENTION",
+        "defaultValue": "1",
+        "type": "Checkbox",
+        "description": "DESCRIPTION_MOBILE_NOTIF_INTERVENTION",
+        "order": "2"
+      }
+    }
+  },
+  {
+    "name": "CATEGORY_LANGUAGES",
+    "items": {
+      "APP_LANGUAGE": {
+        "category": "CATEGORY_LANGUAGES",
+        "name": "APP_LANGUAGE",
+        "defaultValue": "fr_FR",
+        "type": "List",
+        "arrange": [ "en_US", "fr_FR" ],
+        "description": "DESCRIPTION_APP_LANGUAGE",
+        "order": "1"
+      }
+    }
+  }
+]

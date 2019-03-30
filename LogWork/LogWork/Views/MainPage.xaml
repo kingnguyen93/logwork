@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="LogWork.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LogWork"
+    Icon="ic_menu_white"
+    MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <local:MenuPage  Icon="menu.png"/>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

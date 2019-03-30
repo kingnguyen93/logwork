@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Interventions.InterventionsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.Behaviors"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:interventions="clr-namespace:LogWork.Views.Interventions"
+    xmlns:local="clr-namespace:LogWork"
+    x:Name="this"
+    Title="{ex:Translate Key=page_title_interventions}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetSyncCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                BackgroundColor="DeepSkyBlue"
+                HeightRequest="46"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="10"
+                VerticalOptions="Start">
+                <Image
+                    Aspect="AspectFill"
+                    BackgroundColor="Transparent"
+                    HeightRequest="40"
+                    HorizontalOptions="EndAndExpand"
+                    Source="ic_navigate_before_white"
+                    VerticalOptions="Center"
+                    WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BeforeDayCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <DatePicker
+                    Margin="20,0,20,0"
+                    BackgroundColor="Transparent"
+                    Date="{Binding SelectedDate}"
+                    FontSize="16"
+                    Format="dd MMMM yyyy"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    VerticalOptions="Center">
+                    <DatePicker.Effects>
+                        <effects:BorderlessEffect />
+                    </DatePicker.Effects>
+                </DatePicker>
+                <Image
+                    Aspect="AspectFill"
+                    BackgroundColor="Transparent"
+                    HeightRequest="40"
+                    HorizontalOptions="StartAndExpand"
+                    Source="ic_navigate_next_white"
+                    VerticalOptions="Center"
+                    WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextDayCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <ListView
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshingIntervention}"
+                ItemsSource="{Binding ListIntervention}"
+                RefreshCommand="{Binding GetInterventionsCommand}"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10,5,10,5" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    IsVisible="{Binding Source={Static local:AppSettings.MobileShowPriority}}"
+                                    Text="{Binding Priority, Converter={StaticResource PriorityToTextConverter}}"
+                                    TextColor="{Binding Priority, Converter={StaticResource PriorityToColorConverter}}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    IsVisible="{Binding Source={Static local:AppSettings.MobileShowTitle}}"
+                                    Text="{Binding Nom}"
+                                    TextColor="#828692"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    IsVisible="{Binding Source={Static local:AppSettings.MobileShowClient}}"
+                                    Text="{Binding Client.Title}"
+                                    TextColor="#202020"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    IsVisible="{Binding Source={Static local:AppSettings.MobileShowAddress}}"
+                                    MinimumHeightRequest="20"
+                                    Text="{Binding Address.FullAddress}"
+                                    TextColor="#0d0d0d"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    FontSize="12"
+                                    Text="{Binding DateTime}"
+                                    TextColor="#737373" />
+                                <interventions:InterventionStatusView
+                                    Grid.Row="0"
+                                    Grid.RowSpan="5"
+                                    Grid.Column="1"
+                                    CheckedImage="ic_checkbox_checked"
+                                    Command="{Binding BindingContext.ChangeDoneCommand, Source={Reference this}}"
+                                    CommandParameter="{Binding .}"
+                                    HasIndeterminate="{Binding Source={Static local:AppSettings.MobileShowToggleProgress}}"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    IndeterminateImage="ic_in_progress"
+                                    IsChecked="{Binding IsDone}"
+                                    UnCheckedImage="ic_checkbox_unchecked"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        Command="{Binding EditInterventionCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedConverter}"
+                        EventName="ItemTapped" />
+                </ListView.Behaviors>
+            </ListView>
+            <Button
+                BackgroundColor="#47cec0"
+                Command="{Binding AddInterventionCommand}"
+                CornerRadius="0"
+                FontSize="16"
+                HeightRequest="45"
+                HorizontalOptions="FillAndExpand"
+                Text="{ex:Translate Key=button_text_add_an_intervention}"
+                TextColor="White"
+                VerticalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

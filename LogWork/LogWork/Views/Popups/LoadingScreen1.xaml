@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="LogWork.Views.Popups.LoadingScreen1"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <ContentView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Black"
+                Opacity="0.6" />
+            <StackLayout
+                AbsoluteLayout.LayoutBounds=".5,.5,AutoSize,AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Spacing="0">
+                <ActivityIndicator
+                    HeightRequest="45"
+                    HorizontalOptions="Center"
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    Color="White" />
+                <Label
+                    x:Name="lblMessage"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>

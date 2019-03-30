@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="LogWork.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Xamarin.Forms.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Global Styles  -->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Color x:Key="BlueGreen">#47CEC0</Color>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <converters:SelectedItemConverter x:Key="SelectedItemConverter" />
+            <converters:ItemTappedConverter x:Key="ItemTappedConverter" />
+            <converters:IsSelectedConverter x:Key="IsSelectedConverter" />
+            <converters:ReverseBoolConverter x:Key="ReverseBoolConverter" />
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <converters:HasDataConverter x:Key="HasDataConverter" />
+            <converters:IsEmptyDataConverter x:Key="IsEmptyDataConverter" />
+            <converters:EmptyTextConverter x:Key="EmptyTextConverter" />
+            <converters:PriorityToTextConverter x:Key="PriorityToTextConverter" />
+            <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
+            <converters:StringToDateTimeConverter x:Key="StringToDateTimeConverter" />
+            <converters:MinutesToTimeSpanConverter x:Key="MinutesToTimeSpanConverter" />
+            <converters:Base64ToImageSourceConverter x:Key="Base64ToImageSourceConverter" />
+            <converters:DecimalToEuroCurrency x:Key="DecimalToEuroCurrency" />
+            <converters:StatusToColor x:Key="StatusToColor" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

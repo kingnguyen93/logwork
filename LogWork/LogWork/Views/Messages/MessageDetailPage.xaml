@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.Messages.MessageDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10"
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <ScrollView
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <controls:ExtendedStackLayout
+                    HorizontalOptions="FillAndExpand"
+                    ItemsSource="{Binding Messages}"
+                    Spacing="5"
+                    VerticalOptions="Start">
+                    <controls:ExtendedStackLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+                                <Label
+                                    FontSize="11"
+                                    Text="{Binding UserFrom.FullName}"
+                                    TextColor="Black"
+                                    VerticalOptions="Start" />
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    BorderColor="{Binding BackgroundColor}"
+                                    CornerRadius="5"
+                                    HasShadow="False"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start"
+                                    WidthRequest="200">
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Content}"
+                                        TextColor="{Binding TextColor}" />
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </controls:ExtendedStackLayout.ItemTemplate>
+                </controls:ExtendedStackLayout>
+            </ScrollView>
+            <StackLayout
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <Editor
+                    FontSize="12"
+                    HeightRequest="60"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding NewMessage.Content}"
+                    TextColor="Black"
+                    VerticalOptions="Start">
+                    <Editor.Effects>
+                        <effects:RoundedEffect />
+                    </Editor.Effects>
+                </Editor>
+                <Frame
+                    Padding="0"
+                    BackgroundColor="DeepSkyBlue"
+                    CornerRadius="17.5"
+                    HasShadow="False"
+                    HeightRequest="35"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="35">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SendMessageCommand}" />
+                    </Frame.GestureRecognizers>
+                    <Image Margin="8,8,6,8" Source="ic_send_white" />
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

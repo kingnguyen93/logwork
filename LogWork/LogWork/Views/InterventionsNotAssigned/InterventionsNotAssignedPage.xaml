@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LogWork.Views.InterventionsNotAssigned.InterventionsNotAssignedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Xamarin.Forms.Behaviors"
+    xmlns:controls="clr-namespace:Xamarin.Forms.Controls"
+    xmlns:effects="clr-namespace:LogWork.Effects"
+    xmlns:ex="clr-namespace:Xamarin.Forms.Extensions"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Title="{ex:Translate Key=page_title_interventions_not_assigned}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetSyncCommand}" Icon="ic_sync_white.png" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                BackgroundColor="DeepSkyBlue"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="10"
+                VerticalOptions="Start">
+                <Image
+                    HeightRequest="30"
+                    HorizontalOptions="EndAndExpand"
+                    Source="ic_navigate_before_white"
+                    VerticalOptions="Center"
+                    WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BeforeDayCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <DatePicker
+                    BackgroundColor="DeepSkyBlue"
+                    Date="{Binding SelectedDate}"
+                    FontSize="14"
+                    Format="dd MMMM yyyy"
+                    HorizontalOptions="Center"
+                    TextColor="White"
+                    VerticalOptions="Center">
+                    <DatePicker.Effects>
+                        <effects:BorderlessEffect />
+                    </DatePicker.Effects>
+                </DatePicker>
+                <Image
+                    HeightRequest="30"
+                    HorizontalOptions="StartAndExpand"
+                    Source="ic_navigate_next_white"
+                    VerticalOptions="Center"
+                    WidthRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextDayCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <controls:ExtendedListView
+                CanLoadMore="True"
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsBusy}"
+                ItemsSource="{Binding ListIntervention}"
+                LoadMoreCommand="{Binding LoadMoreInterventionsCommand}"
+                LoadPositionOffset="8"
+                RefreshCommand="{Binding GetInterventionsCommand}"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <controls:ExtendedListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="15" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Padding="10,2,10,2"
+                                    Spacing="0">
+                                    <Label
+                                        FontSize="11"
+                                        IsVisible="False"
+                                        Text="{Binding Priority, Converter={StaticResource PriorityToTextConverter}}"
+                                        TextColor="{Binding Priority, Converter={StaticResource PriorityToColorConverter}}" />
+                                    <Label
+                                        FontSize="11"
+                                        Text="{Binding Nom}"
+                                        TextColor="#828692" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Client.Title}"
+                                        TextColor="#202020" />
+                                    <Label
+                                        FontSize="11"
+                                        Text="{Binding Address.FullAddress}"
+                                        TextColor="#0d0d0d" />
+                                </StackLayout>
+                                <BoxView
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    BackgroundColor="DodgerBlue"
+                                    CornerRadius="5"
+                                    HeightRequest="10"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding LastViewDate, Converter={StaticResource IsEmptyDataConverter}}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="10" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:ExtendedListView.ItemTemplate>
+                <controls:ExtendedListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        Command="{Binding EditInterventionCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedConverter}"
+                        EventName="ItemTapped" />
+                </controls:ExtendedListView.Behaviors>
+            </controls:ExtendedListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
